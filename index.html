@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Games</title>
+    <link rel="icon" href="icons/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <img src="icons/logo.png" alt="Logo" class="nav-logo">
+            <span>Cloud Games</span>
+        </div>
+        <div class="nav-search">
+            <span class="material-icons">search</span>
+            <input type="text" id="search-input" placeholder="Search games...">
+        </div>
+        <button class="settings-btn" id="open-settings">
+            <span class="material-icons">settings</span>
+        </button>
+    </header>
 
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Category Tabs Bar -->
+        <nav class="tabs-bar" id="tabs-bar">
+            <button class="tab-btn active" data-category="all">All Games</button>
+        </nav>
+
+        <!-- Dynamic Game Grid -->
+        <section class="game-grid" id="game-grid">
+            <!-- Populated dynamically via main.js -->
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn" id="close-settings"><span class="material-icons">close</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <span>Neon Glow Intensity</span>
+                    <input type="range" id="glow-slider" min="0" max="100" value="50">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
