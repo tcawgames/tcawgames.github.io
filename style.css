@@ -144,7 +144,7 @@ body {
     box-shadow: 0 0 12px var(--neon-glow);
 }
 
-/* Game Grid & Cards */
+/* Game Grid */
 .game-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -199,7 +199,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Modal Overlay */
+/* Modal Overlay & Settings */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -223,8 +223,8 @@ body {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    width: min(460px, 90vw);
-    padding: 24px;
+    width: min(500px, 90vw);
+    padding: 28px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     transform: scale(0.95);
     transition: transform 0.3s ease;
@@ -238,7 +238,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .close-btn {
@@ -248,30 +248,46 @@ body {
     cursor: pointer;
 }
 
-.close-btn:hover {
-    color: var(--neon-green);
+.close-btn:hover { color: var(--neon-green); }
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .setting-item {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+.setting-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.setting-text {
+    display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 0.9rem;
 }
+.setting-text strong { font-size: 0.95rem; font-weight: 500; }
+.setting-text span { font-size: 0.75rem; color: var(--text-muted); }
 
-.setting-item input[type="range"] {
-    accent-color: var(--neon-green);
-    width: 100%;
+.setting-select, .keybind-btn {
+    background: rgba(0, 255, 102, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.85rem;
 }
+.setting-select option { background: var(--bg-color); }
+.keybind-btn.listening { border-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-glow); }
 
-/* Animations */
+input[type="range"] { accent-color: var(--neon-green); width: 130px; }
+
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
