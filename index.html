@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Games</title>
-    <link rel="icon" href="icons/favicon.png">
+    <title id="page-title">TcawMath</title>
+    <link rel="icon" id="page-favicon" href="icons/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
@@ -14,11 +14,11 @@
     <header class="navbar">
         <div class="nav-brand">
             <img src="icons/logo.png" alt="Logo" class="nav-logo">
-            <span>Cloud Games</span>
+            <span>TcawMath</span>
         </div>
         <div class="nav-search">
             <span class="material-icons">search</span>
-            <input type="text" id="search-input" placeholder="Search games...">
+            <input type="text" id="search-input" placeholder="Search equations...">
         </div>
         <button class="settings-btn" id="open-settings">
             <span class="material-icons">settings</span>
@@ -29,7 +29,10 @@
     <main class="main-container">
         <!-- Category Tabs Bar -->
         <nav class="tabs-bar" id="tabs-bar">
-            <button class="tab-btn active" data-category="all">All Games</button>
+            <!-- Populated dynamically, but always starts with All -->
+            <button class="tab-btn active" data-category="all">All</button>
+            <button class="tab-btn" data-category="popular">Popular</button>
+            <button class="tab-btn" data-category="recommended">Recommended</button>
         </nav>
 
         <!-- Dynamic Game Grid -->
@@ -42,12 +45,33 @@
     <div class="modal-overlay" id="settings-modal">
         <div class="modal-card">
             <div class="modal-header">
-                <h2>Settings</h2>
+                <h2>System Settings</h2>
                 <button class="close-btn" id="close-settings"><span class="material-icons">close</span></button>
             </div>
             <div class="modal-body">
                 <div class="setting-item">
-                    <span>Neon Glow Intensity</span>
+                    <div class="setting-text">
+                        <strong>Tab Disguise</strong>
+                        <span>Hide the site title and icon</span>
+                    </div>
+                    <select id="tab-cloak" class="setting-select">
+                        <option value="default">TcawMath</option>
+                        <option value="classroom">Google Classroom</option>
+                        <option value="drive">Google Drive</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-text">
+                        <strong>Panic Key</strong>
+                        <span>Instantly redirects to Google Classroom</span>
+                    </div>
+                    <button id="panic-key-btn" class="keybind-btn">Key: `</button>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-text">
+                        <strong>Neon Glow Intensity</strong>
+                        <span>Adjust the UI lighting</span>
+                    </div>
                     <input type="range" id="glow-slider" min="0" max="100" value="50">
                 </div>
             </div>
