@@ -1,0 +1,19 @@
+{
+    "slope": {
+        "cover": "slope.jpg",
+        "name": "Slope",
+        "catagory": "casual driver",
+        "link": "https://example.com/slope",
+        "type": "html",
+        "popular": true
+    },
+    "retro-bowl": {
+        "cover": "retrobowl.jpg",
+        "name": "Retro Bowl",
+        "catagory": "casual sports",
+        "link": "https://example.com/retro-bowl",
+        "type": "html",
+        "popular": true,
+        "recommended": true
+    }
+}
