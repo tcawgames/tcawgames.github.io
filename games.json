@@ -2,18 +2,881 @@
     "slope": {
         "cover": "slope.jpg",
         "name": "Slope",
+        "gradient": "green",
         "catagory": "casual driver",
-        "link": "https://example.com/slope",
+        "link": "/cloud/slope",
         "type": "html",
         "popular": true
     },
-    "retro-bowl": {
+    "tunnel rush": {
+        "cover": "tunnel-rush.png",
+        "name": "Tunnel Rush",
+        "gradient": "red",
+        "catagory": "casual",
+        "link": "/cloud/tunnel-rush",
+        "type": "html",
+        "recommended": true
+    },
+    "crazy cattle 3d": {
+        "cover": "crazy-cattle-3d.png",
+        "name": "Crazy Cattle 3D",
+        "gradient": "white",
+        "catagory": "casual",
+        "link": "/cloud/crazyc",
+        "type": "html"
+    },
+    "fnaf": {
+        "cover": "fnaf.png",
+        "name": "FNAF",
+        "gradient": "black",
+        "catagory": "casual horror",
+        "link": "/cloud/fnaf-1",
+        "type": "html",
+        "popular": true
+    },
+    "fnaf 2": {
+        "cover": "fnaf2.png",
+        "name": "FNAF 2",
+        "gradient": "black",
+        "catagory": "casual horror",
+        "link": "/cloud/fnaf-2",
+        "type": "html",
+        "popular": true
+    },
+    "fnaf 3": {
+        "cover": "fnaf3.png",
+        "name": "FNAF 3",
+        "gradient": "darkgreen",
+        "catagory": "casual horror",
+        "link": "/cloud/fnaf-3",
+        "type": "html"
+    },
+    "fnaf 4": {
+        "cover": "fnaf4.png",
+        "name": "FNAF 4",
+        "gradient": "darkred",
+        "catagory": "casual horror",
+        "link": "/cloud/fnaf-4",
+        "type": "html"
+    },  
+    "fnaf sister location (remake)": {
+        "cover": "fnafs.png",
+        "name": "FNAF: Sister Location (Remake)",
+        "gradient": "blue",
+        "catagory": "casual horror",
+        "link": "/cloud/sisterlocation.html",
+        "type": "html"
+    },
+    "bitlife": {
+        "cover": "Bitlife.png",
+        "name": "BitLife",
+        "gradient": "red",
+        "catagory": "casual",
+        "link": "/cloud/bitlife",
+        "type": "html",
+        "popular": true
+    },
+    "uno (replica)": {
+        "cover": "uno.avif",
+        "name": "UNO (Replica)",
+        "gradient": "red",
+        "catagory": "casual multiplayer",
+        "link": "/cloud/uno",
+        "type": "html"
+    },
+    "google baseball": {
+        "cover": "gbase.png",
+        "name": "Google Baseball",
+        "gradient": "lightgreen",
+        "catagory": "casual sport",
+        "link": "/cloud/gbase",
+        "type": "html"
+    },
+    "basket bros": {
+        "cover": "basket.png",
+        "name": "BasketBros",
+        "gradient": "orange",
+        "catagory": "casual sport",
+        "link": "/cloud/basketbros",
+        "type": "html",
+        "recommended": true
+    },
+    "basketball stars": {
+        "cover": "basketball-s.png",
+        "name": "Basketball Stars",
+        "gradient": "orange",
+        "catagory": "casual sport",
+        "link": "/cloud/basketball-stars",
+        "type": "html"
+    },
+    "flip the gun": {
+        "cover": "flip.png",
+        "name": "Flip the Gun!",
+        "gradient": "yellow",
+        "catagory": "casual",
+        "link": "/cloud/FLIPTHEGUN",
+        "type": "html"
+    },
+    "blockblast (clone)": {
+        "cover": "block.png",
+        "name": "Block Blast (Clone)",
+        "gradient": "blue",
+        "catagory": "casual puzzle",
+        "link": "/cloud/blockblast",
+        "type": "html",
+        "recommended": true
+    },
+    "funny battle 2": {
+        "cover": "funnyb.png",
+        "name": "Funny Battle 2",
+        "gradient": "white",
+        "catagory": "casual shooter",
+        "link": "/cloud/FUNNYBATTLE2",
+        "type": "html"
+    },
+    "geometry dash lite": {
+        "cover": "GDASH.png",
+        "name": "Geometry Dash Lite",
+        "gradient": "lightblue",
+        "catagory": "casual",
+        "link": "/cloud/Repo4/geometry-dash-lite/",
+        "type": "html",
+        "popular": true
+    },
+    "motox3m": {
+        "cover": "moto.png",
+        "name": "Moto X3M",
+        "gradient": "red",
+        "catagory": "casual driver flash",
+        "link": "/cloud/motox3m",
+        "type": "html",
+        "popular": true
+    },
+    "motox3m 2": {
+        "cover": "moto2.png",
+        "name": "Moto X3M 2",
+        "gradient": "red",
+        "catagory": "casual driver flash",
+        "link": "/cloud/motox3m2",
+        "type": "html"
+    },
+    "motox3m pool": {
+        "cover": "motop.png",
+        "name": "Moto X3M Pool",
+        "gradient": "red",
+        "catagory": "casual driver flash",
+        "link": "/cloud/motox3m-pool",
+        "type": "html"
+    },
+    "motox3m spooky": {
+        "cover": "motospook.png",
+        "name": "Moto X3M Spooky",
+        "gradient": "red",
+        "catagory": "casual driver flash",
+        "link": "/cloud/motox3m-spooky",
+        "type": "html"
+    },
+    "motox3m winter": {
+        "cover": "motow.png",
+        "name": "Moto X3M Winter",
+        "gradient": "red",
+        "catagory": "casual driver flash",
+        "link": "/cloud/motox3m-winter",
+        "type": "html"
+    },
+    "pizza tower": {
+        "cover": "pizzat.png",
+        "name": "Pizza Tower",
+        "gradient": "red",
+        "catagory": "casual",
+        "link": "/cloud/pizza-tower",
+        "type": "html",
+        "recommended": true
+    },
+    "push your luck": {
+        "cover": "pushyl.png",
+        "name": "Push Your Luck",
+        "gradient": "blue",
+        "catagory": "casual",
+        "link": "/cloud/push-your-luck",
+        "type": "html"
+    },
+    "rocket league": {
+        "cover": "rocketl.png",
+        "name": "Rocket League",
+        "gradient": "blue",
+        "catagory": "casual driver",
+        "link": "/cloud/Rocket-League",
+        "type": "html",
+        "status": "broken",
+        "statusMessage": "Fails to load at all",
+        "statusUpdated": "2026-04-12"
+    },
+    "tactical weapon pack 2": {
+        "cover": "twp.png",
+        "name": "Tactical Weapon Pack 2",
+        "gradient": "grey",
+        "catagory": "casual shooter",
+        "link": "/cloud/tactical-weapon-pack-2",
+        "type": "html"
+    },
+    "time shooter 2": {
+        "cover": "tms.png",
+        "name": "Time Shooter 2",
+        "gradient": "red",
+        "catagory": "casual shooter",
+        "link": "/cloud/time-shooter-2",
+        "type": "html"
+    },
+    "minecraft": {
+        "cover": "mc.png",
+        "name": "Minecraft",
+        "gradient": "brown",
+        "catagory": "casual sandbox",
+        "link": "/cloud/mc",
+        "type": "html",
+        "popular": true
+    },
+    "madalin stunt cars 2": {
+        "cover": "msc.png",
+        "name": "Madalin Stunt Cars 2",
+        "gradient": "grey",
+        "catagory": "casual driver",
+        "link": "/cloud/madalin-stunt-cars-2",
+        "type": "html"
+    },
+    "madalin stunt cars 3": {
+        "cover": "msc3.png",
+        "name": "Madalin Stunt Cars 3",
+        "gradient": "grey",
+        "catagory": "casual driver",
+        "link": "/cloud/madalin-stunt-cars-3",
+        "type": "html",
+        "recommended": true
+    },
+    "csgo clicker": {
+        "cover": "csgo.png",
+        "name": "CS:GO Clicker",
+        "gradient": "grey",
+        "catagory": "casual idle",
+        "link": "/cloud/CSGO-CLICKER",
+        "type": "html"
+    },
+    "air battle": {
+        "cover": "airb.png",
+        "name": "Air Battle",
+        "gradient": "grey",
+        "catagory": "casual shooter",
+        "link": "/cloud/airbattle",
+        "type": "html"
+    },
+    "cat tennis": {
+        "cover": "catte.png",
+        "name": "Cat Tennis",
+        "gradient": "white",
+        "catagory": "casual",
+        "link": "/cloud/cat tennis",
+        "type": "html"
+    },
+    "drift boss": {
+        "cover": "driftb.png",
+        "name": "Drift Boss",
+        "gradient": "yellow",
+        "catagory": "casual driver",
+        "link": "/cloud/drift-boss",
+        "type": "html",
+        "popular": true
+    },
+    "superhot": {
+        "cover": "superhot.png",
+        "name": "SUPERHOT",
+        "gradient": "red",
+        "catagory": "casual shooter",
+        "link": "/cloud/superhot",
+        "type": "html"
+    },
+    "tomb of the mask": {
+        "cover": "tombo.png",
+        "name": "Tomb of the Mask",
+        "gradient": "purple",
+        "catagory": "casual",
+        "link": "/cloud/tomb",
+        "type": "html",
+        "recommended": true
+    },
+    "stickman-hook": {
+        "cover": "stickhook.png",
+        "name": "Stickman Hook",
+        "gradient": "red",
+        "catagory": "casual",
+        "link": "/cloud/stickman-hook",
+        "type": "html"
+    },
+    "1v1 lol": {
+        "cover": "1v1lol.png",
+        "name": "1v1.LOL",
+        "gradient": "green",
+        "catagory": "casual shooter multiplayer",
+        "link": "/cloud/lol",
+        "type": "html",
+        "popular": true
+    },
+    "cookie clicker": {
+        "cover": "cookie.png",
+        "name": "Cookie Clicker",
+        "gradient": "brown",
+        "catagory": "casual idle",
+        "link": "/cloud/cookieclicker-master",
+        "type": "html",
+        "popular": true
+    },
+    "fruit ninja": {
+        "cover": "fruitn.png",
+        "name": "Fruit Ninja",
+        "gradient": "brown",
+        "catagory": "casual",
+        "link": "/cloud/fruitninja",
+        "type": "html"
+    },
+    "backrooms": {
+        "cover": "backrooms.png",
+        "name": "The Backrooms",
+        "gradient": "yellow",
+        "catagory": "casual horror",
+        "link": "/cloud/backrooms",
+        "type": "html"
+    },
+    "basket random": {
+        "cover": "basketran.png",
+        "name": "Basket Random",
+        "gradient": "orange",
+        "catagory": "casual sport",
+        "link": "/cloud/basketrandom",
+        "type": "html"
+    },
+    "drive mad": {
+        "cover": "drivem.png",
+        "name": "Drive Mad",
+        "gradient": "yellow",
+        "catagory": "casual driver",
+        "link": "/cloud/drive-mad",
+        "type": "html",
+        "recommended": true
+    },
+    "hexgl": {
+        "cover": "hexgl.png",
+        "name": "HexGL",
+        "gradient": "lightblue",
+        "catagory": "casual driver",
+        "link": "/cloud/HexGL-master",
+        "type": "html"
+    },
+    "monkey mart": {
+        "cover": "monkeym.png",
+        "name": "Monkey Mart",
+        "gradient": "lightgreen",
+        "catagory": "casual idle",
+        "link": "/cloud/monkey-mart",
+        "type": "html",
+        "popular": true
+    },
+    "sniper shot: bullet time": {
+        "cover": "sniper.png",
+        "name": "Sniper Shot: Bullet Time",
+        "gradient": "lightblue",
+        "catagory": "casual shooter",
+        "link": "/cloud/SNIPERFIXED",
+        "type": "html"
+    },
+    "speedstars": {
+        "cover": "speedstars.png",
+        "name": "Speed Stars",
+        "gradient": "red",
+        "catagory": "casual sport",
+        "link": "/cloud/speed-stars",
+        "type": "html"
+    },
+    "granny": {
+        "cover": "granny.png",
+        "name": "Granny",
+        "gradient": "grey",
+        "catagory": "casual horror",
+        "link": "/cloud/granny",
+        "type": "html"
+    },
+    "angry birds": {
+        "cover": "angrybirds.png",
+        "name": "Angry Birds",
+        "gradient": "red",
+        "catagory": "casual",
+        "link": "/cloud/AngryBirds",
+        "type": "html"
+    },
+    "exo": {
+        "cover": "exo.png",
+        "name": "EXO",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/EXO",
+        "type": "html"
+    },
+    "gobble": {
+        "cover": "gobble.avif",
+        "name": "Gobble",
+        "gradient": "purple",
+        "catagory": "casual",
+        "link": "/cloud/Gobble/Gobble.html",
+        "type": "html"
+    },
+    "ultimate flash sonic": {
+        "cover": "sonic.png",
+        "name": "Ultimate Flash Sonic",
+        "gradient": "lightgreen",
+        "catagory": "casual",
+        "link": "/cloud/SONIC.swf",
+        "type": "flash"
+    },
+    "super mario": {
+        "cover": "superm.png",
+        "name": "Super Mario",
+        "gradient": "black",
+        "catagory": "casual",
+        "link": "/cloud/SuperMario",
+        "type": "html",
+        "recommended": true
+    },
+    "polytrack": {
+        "cover": "polytrac.png",
+        "name": "Polytrack",
+        "gradient": "blue",
+        "catagory": "casual driver",
+        "link": "/cloud/polytrack",
+        "type": "html",
+        "popular": true
+    },
+    "riddle school": {
+        "cover": "rid.png",
+        "name": "Riddle School",
+        "gradient": "black",
+        "catagory": "casual story flash",
+        "link": "/cloud/riddd.swf",
+        "type": "flash"
+    },
+    "riddle school 2": {
+        "cover": "rid2.png",
+        "name": "Riddle School 2",
+        "gradient": "green",
+        "catagory": "casual story flash",
+        "link": "/cloud/riddd2.swf",
+        "type": "flash"
+    },
+    "riddle school 3": {
+        "cover": "rid3.png",
+        "name": "Riddle School 3",
+        "gradient": "black",
+        "catagory": "casual story flash",
+        "link": "/cloud/riddd3.swf",
+        "type": "flash"
+    },
+    "riddle school 4": {
+        "cover": "rid4.png",
+        "name": "Riddle School 4",
+        "gradient": "black",
+        "catagory": "casual story flash",
+        "link": "/cloud/riddd4.swf",
+        "type": "flash"
+    },
+    "riddle school 5": {
+        "cover": "rid5.png",
+        "name": "Riddle School 5",
+        "gradient": "black",
+        "catagory": "casual story flash",
+        "link": "/cloud/riddd5.swf",
+        "type": "flash"
+    },
+    "riddle transfer": {
+        "cover": "rid6.png",
+        "name": "Riddle Transfer",
+        "gradient": "black",
+        "catagory": "casual story flash",
+        "link": "/cloud/riddd6.swf",
+        "type": "flash"
+    },
+    "riddle transfer 2": {
+        "cover": "rid7.png",
+        "name": "Riddle Transfer 2",
+        "gradient": "black",
+        "catagory": "casual story flash",
+        "link": "/cloud/riddd7.swf",
+        "type": "flash"
+    },
+    "snow rider 3d": {
+        "cover": "snowrider.png",
+        "name": "Snow Rider 3D",
+        "gradient": "white",
+        "catagory": "casual",
+        "link": "/cloud/snow-rider3d",
+        "type": "html",
+        "popular": true
+    },
+    "stick duel battle": {
+        "cover": "stickduel.png",
+        "name": "Stick Duel Battle",
+        "gradient": "dark-purple",
+        "catagory": "casual shooter",
+        "link": "/cloud/stick-duel-battle",
+        "type": "html"
+    },
+    "pacman": {
+        "cover": "pacman.png",
+        "name": "Pac-Man",
+        "gradient": "yellow",
+        "catagory": "casual",
+        "link": "/cloud/pac-man",
+        "type": "html"
+    },
+    "merge round racers": {
+        "cover": "mrr.png",
+        "name": "Merge Round Racers",
+        "gradient": "grey",
+        "catagory": "casual idle",
+        "link": "/cloud/marge-round-racers",
+        "type": "html"
+    },
+    "breaking the bank": {
+        "cover": "btb.png",
+        "name": "Breaking the Bank",
+        "gradient": "lightblue",
+        "catagory": "casual story flash",
+        "link": "/cloud/henrystickmin/Henry%20Stickmin%20-%20Breaking%20the%20Bank.swf",
+        "type": "flash"
+    },
+    "breaking the bank remastered": {
+        "cover": "btb.png",
+        "name": "Breaking the Bank Remastered",
+        "gradient": "lightblue",
+        "catagory": "casual story flash",
+        "link": "/cloud/breaking_the_bankr.swf",
+        "type": "flash"
+    },
+    "escaping the prison": {
+        "cover": "estp.png",
+        "name": "Escaping the Prison",
+        "gradient": "yellow",
+        "catagory": "casual story flash",
+        "link": "/cloud/henrystickmin/escaping_the_prison.swf",
+        "type": "flash"
+    },
+    "stealing the diamond": {
+        "cover": "stealingt.png",
+        "name": "Stealing the Diamond",
+        "gradient": "white",
+        "catagory": "casual story flash",
+        "link": "/cloud/henrystickmin/Henry Stickmin - Stealing the Diamond.swf",
+        "type": "flash"
+    },
+    "infiltrating the airship": {
+        "cover": "ita.png",
+        "name": "Infiltrating the Airship",
+        "gradient": "red",
+        "catagory": "casual story flash",
+        "link": "/cloud/henrystickmin/infiltratingtheairshipgame.swf",
+        "type": "flash"
+    },
+    "fleeing the complex": {
+        "cover": "ftc.png",
+        "name": "Fleeing the Complex",
+        "gradient": "grey",
+        "catagory": "casual story flash",
+        "link": "/cloud/henrystickmin/Henry Stickmin - Fleeing the Complex.swf",
+        "type": "flash"
+    },
+    "drift hunters": {
+        "cover": "drifthunters.png",
+        "name": "Drift Hunters",
+        "gradient": "grey",
+        "catagory": "casual driver",
+        "link": "/cloud/drift-hunters",
+        "type": "html",
+        "popular": true
+    },
+    "bloons tower defence": {
+        "cover": "btd.png",
+        "name": "Bloons Tower Defense",
+        "gradient": "green",
+        "catagory": "casual idle flash",
+        "link": "/cloud/btd1/game.swf",
+        "type": "flash"
+    },
+    "bloons tower defence 2": {
+        "cover": "btd.png",
+        "name": "Bloons Tower Defense 2",
+        "gradient": "green",
+        "catagory": "casual idle flash",
+        "link": "/cloud/btd2/game.swf",
+        "type": "flash"
+    },
+    "bloons tower defence 3": {
+        "cover": "btd.png",
+        "name": "Bloons Tower Defense 3",
+        "gradient": "green",
+        "catagory": "casual idle flash",
+        "link": "/cloud/btd3/game.swf",
+        "type": "flash"
+    },
+    "bloons tower defence 4": {
+        "cover": "btd.png",
+        "name": "Bloons Tower Defense 4",
+        "gradient": "green",
+        "catagory": "casual idle flash",
+        "link": "/cloud/btd4/btd4.swf",
+        "type": "flash"
+    },
+    "bloons tower defence 5": {
+        "cover": "btd.png",
+        "name": "Bloons Tower Defense 5",
+        "gradient": "green",
+        "catagory": "casual idle flash",
+        "link": "/cloud/btd5/game.swf",
+        "type": "flash",
+        "recommended": true
+    },
+    "duck life": {
+        "cover": "ducklife.avif",
+        "name": "Duck Life",
+        "gradient": "lightgreen",
+        "catagory": "casual flash",
+        "link": "/cloud/ducklife1/game.swf",
+        "type": "flash"
+    },
+    "duck life 2": {
+        "cover": "ducklife.avif",
+        "name": "Duck Life 2",
+        "gradient": "lightgreen",
+        "catagory": "casual flash",
+        "link": "/cloud/ducklife2/game.swf",
+        "type": "flash"
+    },
+    "duck life 3": {
+        "cover": "ducklife.avif",
+        "name": "Duck Life 3",
+        "gradient": "lightgreen",
+        "catagory": "casual flash",
+        "link": "/cloud/ducklife3/game.swf",
+        "type": "flash"
+    },
+    "duck life 4": {
+        "cover": "ducklife.avif",
+        "name": "Duck Life 4",
+        "gradient": "lightgreen",
+        "catagory": "casual flash",
+        "link": "/cloud/ducklife4/game.swf",
+        "type": "flash"
+    },
+    "gun spinn": {
+        "cover": "gunspin.png",
+        "name": "Gun Spin",
+        "gradient": "yellow",
+        "catagory": "casual",
+        "link": "/cloud/gunspinn",
+        "type": "html"
+    },
+    "uzg remastered": {
+        "cover": "uzg.png",
+        "name": "UZG Remastered",
+        "gradient": "grey",
+        "catagory": "shooter",
+        "link": "/cloud/uzgremaster",
+        "type": "html"
+    },
+    "doge miner": {
+        "cover": "dogeminer.png",
+        "name": "Doge Miner",
+        "gradient": "yellow",
+        "catagory": "casual idle",
+        "link": "/cloud/DogeMiner",
+        "type": "html"
+    },
+    "doge miner 2": {
+        "cover": "dogeminer2.png",
+        "name": "Doge Miner 2",
+        "gradient": "yellow",
+        "catagory": "casual idle",
+        "link": "/cloud/Dogeminer2",
+        "type": "html"
+    },
+    "buckshot roulette": {
+        "cover": "BuckshotRoulette.png",
+        "name": "Buckshot Roulette",
+        "gradient": "black",
+        "catagory": "casual shooter",
+        "link": "/cloud/buckshot/buckshot",
+        "type": "buckshot"
+    },
+    "retro bowl": {
         "cover": "retrobowl.jpg",
         "name": "Retro Bowl",
+        "gradient": "green",
         "catagory": "casual sports",
-        "link": "https://example.com/retro-bowl",
+        "link": "/cloud/Repo4/retro-bowl/game.html",
         "type": "html",
-        "popular": true,
+        "popular": true
+    },
+    "boxing random": {
+        "cover": "boxingr.jpg",
+        "name": "Boxing Random",
+        "gradient": "grey",
+        "catagory": "casual sports",
+        "link": "/cloud/Repo4/boxingrandom",
+        "type": "html"
+    },
+    "boxing physics 2": {
+        "cover": "bp2.png",
+        "name": "Boxing Physics 2",
+        "gradient": "grey",
+        "catagory": "casual sports",
+        "link": "/cloud/REPO3/boxing-physics2/",
+        "type": "html"
+    },
+    "friendly fire": {
+        "cover": "ff2.png",
+        "name": "Friendly Fire",
+        "gradient": "purple",
+        "catagory": "casual",
+        "link": "/cloud/REPO3/friendlyfire/",
+        "type": "html"
+    },
+    "soccer random": {
+        "cover": "sr.png",
+        "name": "Soccer Random",
+        "gradient": "green",
+        "catagory": "casual sports",
+        "link": "/cloud/REPO3/soccer-random/",
+        "type": "html"
+    },
+    "jetpack joyride": {
+        "cover": "jpjr.png",
+        "name": "Jetpack Joyride",
+        "gradient": "lightblue",
+        "catagory": "casual",
+        "link": "/cloud/REPO3/jetpackjoyride/",
+        "type": "html"
+    },
+    "fireboy and watergirl 1": {
+        "cover": "fbawg1.png",
+        "name": "Fireboy and Watergirl 1",
+        "gradient": "gold",
+        "catagory": "casual multiplayer",
+        "link": "/cloud/REPO3/FBWG1/",
+        "type": "html",
         "recommended": true
+    },
+    "burrito bison": {
+        "cover": "bllb.png",
+        "name": "Burrito Bison",
+        "gradient": "lightblue",
+        "catagory": "casual",
+        "link": "/cloud/REPO3/bison",
+        "type": "html"
+    },
+    "sort the court": {
+        "cover": "stc.png",
+        "name": "Sort the Court",
+        "gradient": "lightblue",
+        "catagory": "casual",
+        "link": "/cloud/REPO3/court",
+        "type": "html"
+    },
+    "crossy road": {
+        "cover": "csr.png",
+        "name": "Crossy Road",
+        "gradient": "lightblue",
+        "catagory": "casual",
+        "link": "/cloud/REPO3/crossy",
+        "type": "html"
+    },
+    "cell to singularity": {
+        "cover": "ctss.png",
+        "name": "Cell to Singularity",
+        "gradient": "lightblue",
+        "catagory": "casual",
+        "link": "/cloud/REPO3/cell",
+        "type": "html"
+    },
+    "awesome tanks 2": {
+        "cover": "awt2.png",
+        "name": "Awesome Tanks 2",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/Repo4/awesometanks2",
+        "type": "html"
+    },
+    "bottle flip": {
+        "cover": "btf2.png",
+        "name": "Bottle Flip",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/Repo4/bottle-flip/game.html",
+        "type": "html"
+    },
+    "the binding of isaac": {
+        "cover": "tbois.png",
+        "name": "The Binding of Isaac",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/Repo4/the_binding_of_isaac.swf",
+        "type": "flash"
+    },
+    "super smash flash 2": {
+        "cover": "ssf2.png",
+        "name": "Super Smash Flash 2",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/Repo4/super-smash-flash-2.swf",
+        "type": "flash",    
+        "status": "broken",
+        "statusMessage": "",
+        "statusUpdated": "2026-04-12"
+    },
+    "chrome dino": {
+        "cover": "cdno.png",
+        "name": "Chrome Dino",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/REPO3/chrome-dino",
+        "type": "html"
+    },
+    "tiny fishing": {
+        "cover": "tnyf.png",
+        "name": "Tiny Fishing",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/tiny-fishing",
+        "type": "html"
+    },
+    "friday night funkin'": {
+        "cover": "fnf.png",
+        "name": "Friday Night Funkin'",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/FNFF/index.html",
+        "type": "html",    
+        "isexternal": "true"
+    },
+    "five nights at epsteins": {
+        "cover": "fnae.png",
+        "name": "Five Nights at Epstein's",
+        "gradient": "grey",
+        "catagory": "casual",
+        "link": "/cloud/fnae/",
+        "type": "html"
+    },
+    "rally racer dirt": {
+        "cover": "rrdirt.png",
+        "name": "Rally Racer Dirt",
+        "gradient": "grey",
+        "catagory": "casual driver",
+        "link": "/cloud/rally-racer-dirt/",
+        "type": "html"
     }
 }
