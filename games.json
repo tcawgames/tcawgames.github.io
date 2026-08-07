@@ -139,7 +139,7 @@
         "name": "Geometry Dash Lite",
         "gradient": "lightblue",
         "catagory": "casual",
-        "link": "../Games04/Repo4/geometry-dash-lite/",
+        "link": "../cloud2/Repo4/geometry-dash-lite/",
         "type": "html",
         "popular": true
     },
@@ -259,7 +259,7 @@
         "name": "CS:GO Clicker",
         "gradient": "grey",
         "catagory": "casual idle",
-        "link": "../Games02/CSGO-CLICKER",
+        "link": "../cloud0/CSGO-CLICKER",
         "type": "html"
     },
     "air battle": {
@@ -267,7 +267,7 @@
         "name": "Air Battle",
         "gradient": "grey",
         "catagory": "casual shooter",
-        "link": "../Games02/airbattle",
+        "link": "../cloud0/airbattle",
         "type": "html"
     },
     "cat tennis": {
@@ -275,7 +275,7 @@
         "name": "Cat Tennis",
         "gradient": "white",
         "catagory": "casual",
-        "link": "../Games02/cat tennis",
+        "link": "../cloud0/cat tennis",
         "type": "html"
     },
     "drift boss": {
@@ -283,7 +283,7 @@
         "name": "Drift Boss",
         "gradient": "yellow",
         "catagory": "casual driver",
-        "link": "../Games02/drift-boss",
+        "link": "../cloud0/drift-boss",
         "type": "html",
         "popular": true
     },
@@ -292,7 +292,7 @@
         "name": "SUPERHOT",
         "gradient": "red",
         "catagory": "casual shooter",
-        "link": "../Games02/superhot",
+        "link": "../cloud0/superhot",
         "type": "html"
     },
     "tomb of the mask": {
@@ -300,7 +300,7 @@
         "name": "Tomb of the Mask",
         "gradient": "purple",
         "catagory": "casual",
-        "link": "../Games02/tomb",
+        "link": "../cloud0/tomb",
         "type": "html",
         "recommended": true
     },
@@ -309,7 +309,7 @@
         "name": "Stickman Hook",
         "gradient": "red",
         "catagory": "casual",
-        "link": "../Games02/stickman-hook",
+        "link": "../cloud0/stickman-hook",
         "type": "html"
     },
     "1v1 lol": {
@@ -317,7 +317,7 @@
         "name": "1v1.LOL",
         "gradient": "green",
         "catagory": "casual shooter multiplayer",
-        "link": "../Games02/lol",
+        "link": "../cloud0/lol",
         "type": "html",
         "popular": true
     },
@@ -326,7 +326,7 @@
         "name": "Cookie Clicker",
         "gradient": "brown",
         "catagory": "casual idle",
-        "link": "../Games02/cookieclicker-master",
+        "link": "../cloud0/cookieclicker-master",
         "type": "html",
         "popular": true
     },
@@ -335,7 +335,7 @@
         "name": "Fruit Ninja",
         "gradient": "brown",
         "catagory": "casual",
-        "link": "../Games02/fruitninja",
+        "link": "../cloud0/fruitninja",
         "type": "html"
     },
     "backrooms": {
@@ -343,7 +343,7 @@
         "name": "The Backrooms",
         "gradient": "yellow",
         "catagory": "casual horror",
-        "link": "../Games02/backrooms",
+        "link": "../cloud0/backrooms",
         "type": "html"
     },
     "basket random": {
@@ -351,7 +351,7 @@
         "name": "Basket Random",
         "gradient": "orange",
         "catagory": "casual sport",
-        "link": "../Games02/basketrandom",
+        "link": "../cloud0/basketrandom",
         "type": "html"
     },
     "drive mad": {
@@ -359,7 +359,7 @@
         "name": "Drive Mad",
         "gradient": "yellow",
         "catagory": "casual driver",
-        "link": "../Games02/drive-mad",
+        "link": "../cloud0/drive-mad",
         "type": "html",
         "recommended": true
     },
@@ -368,7 +368,7 @@
         "name": "HexGL",
         "gradient": "lightblue",
         "catagory": "casual driver",
-        "link": "../Games02/HexGL-master",
+        "link": "../cloud0/HexGL-master",
         "type": "html"
     },
     "monkey mart": {
@@ -376,7 +376,7 @@
         "name": "Monkey Mart",
         "gradient": "lightgreen",
         "catagory": "casual idle",
-        "link": "../Games02/monkey-mart",
+        "link": "../cloud0/monkey-mart",
         "type": "html",
         "popular": true
     },
@@ -385,7 +385,7 @@
         "name": "Sniper Shot: Bullet Time",
         "gradient": "lightblue",
         "catagory": "casual shooter",
-        "link": "../Games02/SNIPERFIXED",
+        "link": "../cloud0/SNIPERFIXED",
         "type": "html"
     },
     "speedstars": {
@@ -393,7 +393,7 @@
         "name": "Speed Stars",
         "gradient": "red",
         "catagory": "casual sport",
-        "link": "../Games02/speed-stars",
+        "link": "../cloud0/speed-stars",
         "type": "html"
     },
     "granny": {
@@ -401,7 +401,7 @@
         "name": "Granny",
         "gradient": "grey",
         "catagory": "casual horror",
-        "link": "../Games02/granny",
+        "link": "../cloud0/granny",
         "type": "html"
     },
     "angry birds": {
@@ -409,7 +409,7 @@
         "name": "Angry Birds",
         "gradient": "red",
         "catagory": "casual",
-        "link": "../Games02/AngryBirds",
+        "link": "../cloud0/AngryBirds",
         "type": "html"
     },
     "exo": {
@@ -417,7 +417,7 @@
         "name": "EXO",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games02/EXO",
+        "link": "../cloud0/EXO",
         "type": "html"
     },
     "gobble": {
@@ -425,7 +425,7 @@
         "name": "Gobble",
         "gradient": "purple",
         "catagory": "casual",
-        "link": "../Games02/Gobble/Gobble.html",
+        "link": "../cloud0/Gobble/Gobble.html",
         "type": "html"
     },
     "ultimate flash sonic": {
@@ -433,7 +433,7 @@
         "name": "Ultimate Flash Sonic",
         "gradient": "lightgreen",
         "catagory": "casual",
-        "link": "../Games02/SONIC.swf",
+        "link": "../cloud0/SONIC.swf",
         "type": "flash"
     },
     "super mario": {
@@ -441,7 +441,7 @@
         "name": "Super Mario",
         "gradient": "black",
         "catagory": "casual",
-        "link": "../Games02/SuperMario",
+        "link": "../cloud0/SuperMario",
         "type": "html",
         "recommended": true
     },
@@ -450,7 +450,7 @@
         "name": "Polytrack",
         "gradient": "blue",
         "catagory": "casual driver",
-        "link": "../Games02/polytrack",
+        "link": "../cloud0/polytrack",
         "type": "html",
         "popular": true
     },
@@ -459,7 +459,7 @@
         "name": "Riddle School",
         "gradient": "black",
         "catagory": "casual story flash",
-        "link": "../Games02/riddd.swf",
+        "link": "../cloud0/riddd.swf",
         "type": "flash"
     },
     "riddle school 2": {
@@ -467,7 +467,7 @@
         "name": "Riddle School 2",
         "gradient": "green",
         "catagory": "casual story flash",
-        "link": "../Games02/riddd2.swf",
+        "link": "../cloud0/riddd2.swf",
         "type": "flash"
     },
     "riddle school 3": {
@@ -475,7 +475,7 @@
         "name": "Riddle School 3",
         "gradient": "black",
         "catagory": "casual story flash",
-        "link": "../Games02/riddd3.swf",
+        "link": "../cloud0/riddd3.swf",
         "type": "flash"
     },
     "riddle school 4": {
@@ -483,7 +483,7 @@
         "name": "Riddle School 4",
         "gradient": "black",
         "catagory": "casual story flash",
-        "link": "../Games02/riddd4.swf",
+        "link": "../cloud0/riddd4.swf",
         "type": "flash"
     },
     "riddle school 5": {
@@ -491,7 +491,7 @@
         "name": "Riddle School 5",
         "gradient": "black",
         "catagory": "casual story flash",
-        "link": "../Games02/riddd5.swf",
+        "link": "../cloud0/riddd5.swf",
         "type": "flash"
     },
     "riddle transfer": {
@@ -499,7 +499,7 @@
         "name": "Riddle Transfer",
         "gradient": "black",
         "catagory": "casual story flash",
-        "link": "../Games02/riddd6.swf",
+        "link": "../cloud0/riddd6.swf",
         "type": "flash"
     },
     "riddle transfer 2": {
@@ -507,7 +507,7 @@
         "name": "Riddle Transfer 2",
         "gradient": "black",
         "catagory": "casual story flash",
-        "link": "../Games02/riddd7.swf",
+        "link": "../cloud0/riddd7.swf",
         "type": "flash"
     },
     "snow rider 3d": {
@@ -515,7 +515,7 @@
         "name": "Snow Rider 3D",
         "gradient": "white",
         "catagory": "casual",
-        "link": "../Games02/snow-rider3d",
+        "link": "../cloud0/snow-rider3d",
         "type": "html",
         "popular": true
     },
@@ -524,7 +524,7 @@
         "name": "Stick Duel Battle",
         "gradient": "dark-purple",
         "catagory": "casual shooter",
-        "link": "../Games02/stick-duel-battle",
+        "link": "../cloud0/stick-duel-battle",
         "type": "html"
     },
     "pacman": {
@@ -532,7 +532,7 @@
         "name": "Pac-Man",
         "gradient": "yellow",
         "catagory": "casual",
-        "link": "../Games02/pac-man",
+        "link": "../cloud0/pac-man",
         "type": "html"
     },
     "merge round racers": {
@@ -540,7 +540,7 @@
         "name": "Merge Round Racers",
         "gradient": "grey",
         "catagory": "casual idle",
-        "link": "../Games02/marge-round-racers",
+        "link": "../cloud0/marge-round-racers",
         "type": "html"
     },
     "breaking the bank": {
@@ -548,7 +548,7 @@
         "name": "Breaking the Bank",
         "gradient": "lightblue",
         "catagory": "casual story flash",
-        "link": "../Games02/henrystickmin/Henry%20Stickmin%20-%20Breaking%20the%20Bank.swf",
+        "link": "../cloud0/henrystickmin/Henry%20Stickmin%20-%20Breaking%20the%20Bank.swf",
         "type": "flash"
     },
     "breaking the bank remastered": {
@@ -556,7 +556,7 @@
         "name": "Breaking the Bank Remastered",
         "gradient": "lightblue",
         "catagory": "casual story flash",
-        "link": "../Games03/breaking_the_bankr.swf",
+        "link": "../cloud1/breaking_the_bankr.swf",
         "type": "flash"
     },
     "escaping the prison": {
@@ -564,7 +564,7 @@
         "name": "Escaping the Prison",
         "gradient": "yellow",
         "catagory": "casual story flash",
-        "link": "../Games02/henrystickmin/escaping_the_prison.swf",
+        "link": "../cloud0/henrystickmin/escaping_the_prison.swf",
         "type": "flash"
     },
     "stealing the diamond": {
@@ -572,7 +572,7 @@
         "name": "Stealing the Diamond",
         "gradient": "white",
         "catagory": "casual story flash",
-        "link": "../Games02/henrystickmin/Henry Stickmin - Stealing the Diamond.swf",
+        "link": "../cloud0/henrystickmin/Henry Stickmin - Stealing the Diamond.swf",
         "type": "flash"
     },
     "infiltrating the airship": {
@@ -580,7 +580,7 @@
         "name": "Infiltrating the Airship",
         "gradient": "red",
         "catagory": "casual story flash",
-        "link": "../Games02/henrystickmin/infiltratingtheairshipgame.swf",
+        "link": "../cloud0/henrystickmin/infiltratingtheairshipgame.swf",
         "type": "flash"
     },
     "fleeing the complex": {
@@ -588,7 +588,7 @@
         "name": "Fleeing the Complex",
         "gradient": "grey",
         "catagory": "casual story flash",
-        "link": "../Games02/henrystickmin/Henry Stickmin - Fleeing the Complex.swf",
+        "link": "../cloud0/henrystickmin/Henry Stickmin - Fleeing the Complex.swf",
         "type": "flash"
     },
     "drift hunters": {
@@ -596,7 +596,7 @@
         "name": "Drift Hunters",
         "gradient": "grey",
         "catagory": "casual driver",
-        "link": "../Games02/drift-hunters",
+        "link": "../cloud0/drift-hunters",
         "type": "html",
         "popular": true
     },
@@ -605,7 +605,7 @@
         "name": "Bloons Tower Defense",
         "gradient": "green",
         "catagory": "casual idle flash",
-        "link": "../Games02/btd1/game.swf",
+        "link": "../cloud0/btd1/game.swf",
         "type": "flash"
     },
     "bloons tower defence 2": {
@@ -613,7 +613,7 @@
         "name": "Bloons Tower Defense 2",
         "gradient": "green",
         "catagory": "casual idle flash",
-        "link": "../Games02/btd2/game.swf",
+        "link": "../cloud0/btd2/game.swf",
         "type": "flash"
     },
     "bloons tower defence 3": {
@@ -621,7 +621,7 @@
         "name": "Bloons Tower Defense 3",
         "gradient": "green",
         "catagory": "casual idle flash",
-        "link": "../Games02/btd3/game.swf",
+        "link": "../cloud0/btd3/game.swf",
         "type": "flash"
     },
     "bloons tower defence 4": {
@@ -629,7 +629,7 @@
         "name": "Bloons Tower Defense 4",
         "gradient": "green",
         "catagory": "casual idle flash",
-        "link": "../Games02/btd4/btd4.swf",
+        "link": "../cloud0/btd4/btd4.swf",
         "type": "flash"
     },
     "bloons tower defence 5": {
@@ -637,7 +637,7 @@
         "name": "Bloons Tower Defense 5",
         "gradient": "green",
         "catagory": "casual idle flash",
-        "link": "../Games02/btd5/game.swf",
+        "link": "../cloud0/btd5/game.swf",
         "type": "flash",
         "recommended": true
     },
@@ -646,7 +646,7 @@
         "name": "Duck Life",
         "gradient": "lightgreen",
         "catagory": "casual flash",
-        "link": "../Games02/ducklife1/game.swf",
+        "link": "../cloud0/ducklife1/game.swf",
         "type": "flash"
     },
     "duck life 2": {
@@ -654,7 +654,7 @@
         "name": "Duck Life 2",
         "gradient": "lightgreen",
         "catagory": "casual flash",
-        "link": "../Games02/ducklife2/game.swf",
+        "link": "../cloud0/ducklife2/game.swf",
         "type": "flash"
     },
     "duck life 3": {
@@ -662,7 +662,7 @@
         "name": "Duck Life 3",
         "gradient": "lightgreen",
         "catagory": "casual flash",
-        "link": "../Games02/ducklife3/game.swf",
+        "link": "../cloud0/ducklife3/game.swf",
         "type": "flash"
     },
     "duck life 4": {
@@ -670,7 +670,7 @@
         "name": "Duck Life 4",
         "gradient": "lightgreen",
         "catagory": "casual flash",
-        "link": "../Games02/ducklife4/game.swf",
+        "link": "../cloud0/ducklife4/game.swf",
         "type": "flash"
     },
     "gun spinn": {
@@ -678,7 +678,7 @@
         "name": "Gun Spin",
         "gradient": "yellow",
         "catagory": "casual",
-        "link": "../Games02/gunspinn",
+        "link": "../cloud0/gunspinn",
         "type": "html"
     },
     "uzg remastered": {
@@ -686,7 +686,7 @@
         "name": "UZG Remastered",
         "gradient": "grey",
         "catagory": "shooter",
-        "link": "../Games02/uzgremaster",
+        "link": "../cloud0/uzgremaster",
         "type": "html"
     },
     "doge miner": {
@@ -694,7 +694,7 @@
         "name": "Doge Miner",
         "gradient": "yellow",
         "catagory": "casual idle",
-        "link": "../Games02/DogeMiner",
+        "link": "../cloud0/DogeMiner",
         "type": "html"
     },
     "doge miner 2": {
@@ -702,7 +702,7 @@
         "name": "Doge Miner 2",
         "gradient": "yellow",
         "catagory": "casual idle",
-        "link": "../Games02/Dogeminer2",
+        "link": "../cloud0/Dogeminer2",
         "type": "html"
     },
     "buckshot roulette": {
@@ -718,7 +718,7 @@
         "name": "Retro Bowl",
         "gradient": "green",
         "catagory": "casual sports",
-        "link": "../Games03/Repo4/retro-bowl/game.html",
+        "link": "../cloud1/Repo4/retro-bowl/game.html",
         "type": "html",
         "popular": true
     },
@@ -727,7 +727,7 @@
         "name": "Boxing Random",
         "gradient": "grey",
         "catagory": "casual sports",
-        "link": "../Games04/Repo4/boxingrandom",
+        "link": "../cloud2/Repo4/boxingrandom",
         "type": "html"
     },
     "boxing physics 2": {
@@ -735,7 +735,7 @@
         "name": "Boxing Physics 2",
         "gradient": "grey",
         "catagory": "casual sports",
-        "link": "../Games03/REPO3/boxing-physics2/",
+        "link": "../cloud1/REPO3/boxing-physics2/",
         "type": "html"
     },
     "friendly fire": {
@@ -743,7 +743,7 @@
         "name": "Friendly Fire",
         "gradient": "purple",
         "catagory": "casual",
-        "link": "../Games03/REPO3/friendlyfire/",
+        "link": "../cloud1/REPO3/friendlyfire/",
         "type": "html"
     },
     "soccer random": {
@@ -751,7 +751,7 @@
         "name": "Soccer Random",
         "gradient": "green",
         "catagory": "casual sports",
-        "link": "../Games03/REPO3/soccer-random/",
+        "link": "../cloud1/REPO3/soccer-random/",
         "type": "html"
     },
     "jetpack joyride": {
@@ -759,7 +759,7 @@
         "name": "Jetpack Joyride",
         "gradient": "lightblue",
         "catagory": "casual",
-        "link": "../Games03/REPO3/jetpackjoyride/",
+        "link": "../cloud1/REPO3/jetpackjoyride/",
         "type": "html"
     },
     "fireboy and watergirl 1": {
@@ -767,7 +767,7 @@
         "name": "Fireboy and Watergirl 1",
         "gradient": "gold",
         "catagory": "casual multiplayer",
-        "link": "../Games03/REPO3/FBWG1/",
+        "link": "../cloud1/REPO3/FBWG1/",
         "type": "html",
         "recommended": true
     },
@@ -776,7 +776,7 @@
         "name": "Burrito Bison",
         "gradient": "lightblue",
         "catagory": "casual",
-        "link": "../Games03/REPO3/bison",
+        "link": "../cloud1/REPO3/bison",
         "type": "html"
     },
     "sort the court": {
@@ -784,7 +784,7 @@
         "name": "Sort the Court",
         "gradient": "lightblue",
         "catagory": "casual",
-        "link": "../Games03/REPO3/court",
+        "link": "../cloud1/REPO3/court",
         "type": "html"
     },
     "crossy road": {
@@ -792,7 +792,7 @@
         "name": "Crossy Road",
         "gradient": "lightblue",
         "catagory": "casual",
-        "link": "../Games03/REPO3/crossy",
+        "link": "../cloud1/REPO3/crossy",
         "type": "html"
     },
     "cell to singularity": {
@@ -800,7 +800,7 @@
         "name": "Cell to Singularity",
         "gradient": "lightblue",
         "catagory": "casual",
-        "link": "../Games03/REPO3/cell",
+        "link": "../cloud1/REPO3/cell",
         "type": "html"
     },
     "awesome tanks 2": {
@@ -808,7 +808,7 @@
         "name": "Awesome Tanks 2",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games04/Repo4/awesometanks2",
+        "link": "../cloud2/Repo4/awesometanks2",
         "type": "html"
     },
     "bottle flip": {
@@ -816,7 +816,7 @@
         "name": "Bottle Flip",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games04/Repo4/bottle-flip/game.html",
+        "link": "../cloud2/Repo4/bottle-flip/game.html",
         "type": "html"
     },
     "the binding of isaac": {
@@ -824,7 +824,7 @@
         "name": "The Binding of Isaac",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games04/Repo4/the_binding_of_isaac.swf",
+        "link": "../cloud2/Repo4/the_binding_of_isaac.swf",
         "type": "flash"
     },
     "super smash flash 2": {
@@ -832,7 +832,7 @@
         "name": "Super Smash Flash 2",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games04/Repo4/super-smash-flash-2.swf",
+        "link": "../cloud2/Repo4/super-smash-flash-2.swf",
         "type": "flash",    
         "status": "broken",
         "statusMessage": "",
@@ -843,7 +843,7 @@
         "name": "Chrome Dino",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games03/REPO3/chrome-dino",
+        "link": "../cloud1/REPO3/chrome-dino",
         "type": "html"
     },
     "tiny fishing": {
@@ -851,7 +851,7 @@
         "name": "Tiny Fishing",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games02/tiny-fishing",
+        "link": "../cloud0/tiny-fishing",
         "type": "html"
     },
     "friday night funkin'": {
@@ -868,7 +868,7 @@
         "name": "Five Nights at Epstein's",
         "gradient": "grey",
         "catagory": "casual",
-        "link": "../Games04/fnae/",
+        "link": "../cloud2/fnae/",
         "type": "html"
     },
     "rally racer dirt": {
@@ -876,7 +876,7 @@
         "name": "Rally Racer Dirt",
         "gradient": "grey",
         "catagory": "casual driver",
-        "link": "../Games04/rally-racer-dirt/",
+        "link": "../cloud2/rally-racer-dirt/",
         "type": "html"
     }
 }
