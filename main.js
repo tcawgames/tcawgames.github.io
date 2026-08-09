@@ -43,7 +43,7 @@ function applyTabCloak(type) {
         favicon.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
     } else {
         title.textContent = 'TcawMath';
-        favicon.href = 'icons/favicon.png';
+        favicon.href = '/icons/favicon.png';
     }
 }
 
@@ -106,8 +106,8 @@ function renderGames(gamesObj, searchQuery = '') {
         card.className = 'game-card';
         card.style.animationDelay = `${index * 0.02}s`;
 
-        // Automatically pulls the cover filename using the game's designated repository path
-        let coverSrc = 'icons/favicon.png';
+        // Image path handling
+        let coverSrc = '/icons/favicon.png';
         if (game.cover) {
             if (game.link && game.link.startsWith('../')) {
                 const repoFolder = game.link.split('/')[1]; 
@@ -118,7 +118,7 @@ function renderGames(gamesObj, searchQuery = '') {
         }
 
         card.innerHTML = `
-            <img class="game-thumb" src="${coverSrc}" alt="${game.name}" loading="lazy" onerror="this.src='icons/favicon.png'">
+            <img class="game-thumb" src="${coverSrc}" alt="${game.name}" loading="lazy" onerror="this.src='/icons/favicon.png'">
             <div class="game-info">
                 <h3 class="game-title">${game.name}</h3>
                 <span class="game-category">${game.catagory || 'casual'}</span>
@@ -126,8 +126,7 @@ function renderGames(gamesObj, searchQuery = '') {
         `;
 
         card.addEventListener('click', () => {
-            // FIX: Successfully routes to learn.html instead of the missing play.html
-            window.location.href = `learn.html?id=${encodeURIComponent(id)}&link=${encodeURIComponent(game.link)}`;
+            window.location.href = `learn?id=${encodeURIComponent(id)}&link=${encodeURIComponent(game.link)}`;
         });
 
         grid.appendChild(card);
