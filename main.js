@@ -68,9 +68,7 @@ function buildCategories() {
     });
 
     const tabsBar = document.getElementById('tabs-bar');
-    // We already have All, Popular, and Recommended hardcoded in HTML, just append the rest
     categoriesSet.forEach(cat => {
-        // Skip adding if we already have static buttons for them
         if (['casual', 'popular', 'recommended', 'all'].includes(cat.toLowerCase())) return;
         
         const btn = document.createElement('button');
@@ -108,7 +106,16 @@ function renderGames(gamesObj, searchQuery = '') {
         card.className = 'game-card';
         card.style.animationDelay = `${index * 0.02}s`;
 
-        const coverSrc = game.cover ? `covers/${game.cover}` : 'icons/favicon.png';
+        // Automatically pulls the cover filename using the game's designated repository path
+        let coverSrc = 'icons/favicon.png';
+        if (game.cover) {
+            if (game.link && game.link.startsWith('../')) {
+                const repoFolder = game.link.split('/')[1]; 
+                coverSrc = `/${repoFolder}/${game.cover}`;
+            } else {
+                coverSrc = game.cover;
+            }
+        }
 
         card.innerHTML = `
             <img class="game-thumb" src="${coverSrc}" alt="${game.name}" loading="lazy" onerror="this.src='icons/favicon.png'">
@@ -119,7 +126,8 @@ function renderGames(gamesObj, searchQuery = '') {
         `;
 
         card.addEventListener('click', () => {
-            window.location.href = `play.html?id=${encodeURIComponent(id)}&link=${encodeURIComponent(game.link)}`;
+            // FIX: Successfully routes to learn.html instead of the missing play.html
+            window.location.href = `learn.html?id=${encodeURIComponent(id)}&link=${encodeURIComponent(game.link)}`;
         });
 
         grid.appendChild(card);
@@ -127,11 +135,9 @@ function renderGames(gamesObj, searchQuery = '') {
 }
 
 function setupEventListeners() {
-    // Search
     const searchInput = document.getElementById('search-input');
     searchInput.addEventListener('input', (e) => renderGames(allGamesData, e.target.value));
 
-    // Tabs
     const tabsBar = document.getElementById('tabs-bar');
     tabsBar.addEventListener('click', (e) => {
         if (e.target.classList.contains('tab-btn')) {
@@ -142,27 +148,23 @@ function setupEventListeners() {
         }
     });
 
-    // Modal
     const modal = document.getElementById('settings-modal');
     document.getElementById('open-settings').addEventListener('click', () => modal.classList.add('active'));
     document.getElementById('close-settings').addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 
-    // Glow Slider
     document.getElementById('glow-slider').addEventListener('input', (e) => {
         settings.glow = e.target.value;
         document.documentElement.style.setProperty('--neon-glow', `rgba(0, 255, 102, ${settings.glow / 200})`);
         saveSettings();
     });
 
-    // Tab Cloaker
     document.getElementById('tab-cloak').addEventListener('change', (e) => {
         settings.tabCloak = e.target.value;
         applyTabCloak(settings.tabCloak);
         saveSettings();
     });
 
-    // Panic Key Binder
     const panicBtn = document.getElementById('panic-key-btn');
     panicBtn.addEventListener('click', () => {
         panicBtn.textContent = 'Press any key...';
@@ -179,7 +181,6 @@ function setupEventListeners() {
         document.addEventListener('keydown', keyHandler);
     });
 
-    // Global Panic Key Listener
     document.addEventListener('keydown', (e) => {
         if (e.key === settings.panicKey && document.activeElement.tagName !== 'INPUT') {
             window.location.href = 'https://classroom.google.com';
