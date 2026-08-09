@@ -64,7 +64,7 @@
             <button class="hud-btn" onclick="window.location.href='index.html'" title="Return Home">
                 <span class="material-icons" style="font-size: 18px;">arrow_back</span>
             </button>
-            <span class="hud-title" id="game-title-display">Loading...</span>
+            <span class="hud-title" id="game-title-display">Loading Game...</span>
             <button class="hud-btn" onclick="toggleFullscreen()" title="Fullscreen">
                 <span class="material-icons" style="font-size: 18px;">fullscreen</span>
             </button>
@@ -76,6 +76,7 @@
     </div>
 
     <script>
+        // Apply saved settings for Panic Key and Tab Cloak
         const saved = localStorage.getItem('tcawSettings');
         if (saved) {
             const settings = JSON.parse(saved);
@@ -91,7 +92,7 @@
             }
 
             document.addEventListener('keydown', (e) => {
-                if (e.key === settings.panicKey && document.activeElement.tagName !== 'INPUT') {
+                if (e.key === settings.panicKey) {
                     window.location.href = 'https://classroom.google.com';
                 }
             });
@@ -99,43 +100,11 @@
 
         const params = new URLSearchParams(window.location.search);
         const gameId = params.get('id');
-        let gameLink = params.get('link');
+        const gameLink = params.get('link');
 
-        if (gameId) {
-            document.getElementById('game-title-display').textContent = gameId.toUpperCase();
-        }
-
-        if (gameLink) {
-            // Ensure the path properly maps from the root domain
-            if (gameLink.startsWith('../')) {
-                gameLink = gameLink.substring(2); 
-            }
-
-            if (gameLink.endsWith('.swf')) {
-                document.getElementById('gameiframe').style.display = 'none';
-                
-                const ruffleScript = document.createElement('script');
-                ruffleScript.src = "https://unpkg.com/@ruffle-rs/ruffle";
-                document.head.appendChild(ruffleScript);
-                
-                ruffleScript.onload = () => {
-                    const ruffle = window.RufflePlayer.newest();
-                    const player = ruffle.createPlayer();
-                    player.style.width = '100%';
-                    player.style.height = '100%';
-                    player.style.border = 'none';
-                    document.querySelector('.frame-container').appendChild(player);
-                    player.load(gameLink); 
-                };
-            } else {
-                if (!gameLink.split('/').pop().includes('.') && !gameLink.endsWith('/')) {
-                    gameLink += '/';
-                }
-                document.getElementById('gameiframe').src = gameLink;
-            }
-        } else {
-            document.getElementById('game-title-display').textContent = "Error: Game not found";
-        }
+        if (gameId) document.getElementById('game-title-display').textContent = gameId.toUpperCase();
+        if (gameLink) document.getElementById('gameiframe').src = gameLink;
+        else document.getElementById('game-title-display').textContent = "Error: Game not found";
 
         function toggleFullscreen() {
             if (!document.fullscreenElement) document.documentElement.requestFullscreen();
