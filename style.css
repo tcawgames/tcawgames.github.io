@@ -44,11 +44,13 @@ body {
     font-size: 1.2rem;
     color: var(--neon-green);
     text-shadow: 0 0 10px var(--neon-glow);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .nav-logo {
-    width: 36px;
-    height: 36px;
+    width: 48px;  /* Increased size */
+    height: 48px; /* Increased size */
     object-fit: contain;
 }
 
