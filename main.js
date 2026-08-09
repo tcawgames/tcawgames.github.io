@@ -1,86 +1,3 @@
-let allGamesData = {};
-let currentCategory = 'all';
-
-// System Settings State
-let settings = {
-    glow: 50,
-    panicKey: '`',
-    tabCloak: 'default'
-};
-
-document.addEventListener('DOMContentLoaded', async () => {
-    loadSettings();
-    await fetchGames();
-    setupEventListeners();
-});
-
-function loadSettings() {
-    const saved = localStorage.getItem('tcawSettings');
-    if (saved) settings = JSON.parse(saved);
-
-    // Apply Settings
-    document.getElementById('glow-slider').value = settings.glow;
-    document.documentElement.style.setProperty('--neon-glow', `rgba(0, 255, 102, ${settings.glow / 200})`);
-    
-    document.getElementById('panic-key-btn').textContent = `Key: ${settings.panicKey}`;
-    document.getElementById('tab-cloak').value = settings.tabCloak;
-    applyTabCloak(settings.tabCloak);
-}
-
-function saveSettings() {
-    localStorage.setItem('tcawSettings', JSON.stringify(settings));
-}
-
-function applyTabCloak(type) {
-    const title = document.getElementById('page-title');
-    const favicon = document.getElementById('page-favicon');
-    
-    if (type === 'classroom') {
-        title.textContent = 'Classes';
-        favicon.href = 'https://ssl.gstatic.com/classroom/favicon.png';
-    } else if (type === 'drive') {
-        title.textContent = 'My Drive - Google Drive';
-        favicon.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
-    } else {
-        title.textContent = 'TcawMath';
-        favicon.href = 'icons/favicon.png';
-    }
-}
-
-async function fetchGames() {
-    try {
-        const response = await fetch('games.json');
-        allGamesData = await response.json();
-        buildCategories();
-        renderGames(allGamesData);
-    } catch (error) {
-        console.error('Failed to load games.json:', error);
-        document.getElementById('game-grid').innerHTML = '<p style="color:var(--text-muted)">Failed to load games catalog.</p>';
-    }
-}
-
-function buildCategories() {
-    const categoriesSet = new Set();
-    Object.values(allGamesData).forEach(game => {
-        if (game.catagory) {
-            game.catagory.split(' ').forEach(cat => categoriesSet.add(cat.trim()));
-        }
-    });
-
-    const tabsBar = document.getElementById('tabs-bar');
-    // We already have All, Popular, and Recommended hardcoded in HTML, just append the rest
-    categoriesSet.forEach(cat => {
-        // Skip adding if we already have static buttons for them
-        if (['casual', 'popular', 'recommended', 'all'].includes(cat.toLowerCase())) return;
-        
-        const btn = document.createElement('button');
-        btn.className = 'tab-btn';
-        btn.dataset.category = cat.toLowerCase();
-        btn.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
-        tabsBar.appendChild(btn);
-    });
-}
-
 function renderGames(gamesObj, searchQuery = '') {
     const grid = document.getElementById('game-grid');
     grid.innerHTML = '';
@@ -108,7 +25,20 @@ function renderGames(gamesObj, searchQuery = '') {
         card.className = 'game-card';
         card.style.animationDelay = `${index * 0.02}s`;
 
-        const coverSrc = game.cover ? `covers/${game.cover}` : 'icons/favicon.png';
+        // Dynamically grab the image from the correct cloud repository
+        let coverSrc = 'icons/favicon.png'; // Fallback
+        if (game.cover) {
+            // Check if the game is in a secondary repo (e.g., "../cloud0/...")
+            if (game.link && game.link.startsWith('../')) {
+                // Extracts the repository name (e.g., "cloud", "cloud0", "cloud1")
+                const repoFolder = game.link.split('/')[1]; 
+                
+                // Constructs the image URL to point to that repository
+                coverSrc = `/${repoFolder}/${game.cover}`; 
+            } else {
+                coverSrc = game.cover;
+            }
+        }
 
         card.innerHTML = `
             <img class="game-thumb" src="${coverSrc}" alt="${game.name}" loading="lazy" onerror="this.src='icons/favicon.png'">
@@ -123,66 +53,5 @@ function renderGames(gamesObj, searchQuery = '') {
         });
 
         grid.appendChild(card);
-    });
-}
-
-function setupEventListeners() {
-    // Search
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', (e) => renderGames(allGamesData, e.target.value));
-
-    // Tabs
-    const tabsBar = document.getElementById('tabs-bar');
-    tabsBar.addEventListener('click', (e) => {
-        if (e.target.classList.contains('tab-btn')) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentCategory = e.target.dataset.category;
-            renderGames(allGamesData, searchInput.value);
-        }
-    });
-
-    // Modal
-    const modal = document.getElementById('settings-modal');
-    document.getElementById('open-settings').addEventListener('click', () => modal.classList.add('active'));
-    document.getElementById('close-settings').addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
-
-    // Glow Slider
-    document.getElementById('glow-slider').addEventListener('input', (e) => {
-        settings.glow = e.target.value;
-        document.documentElement.style.setProperty('--neon-glow', `rgba(0, 255, 102, ${settings.glow / 200})`);
-        saveSettings();
-    });
-
-    // Tab Cloaker
-    document.getElementById('tab-cloak').addEventListener('change', (e) => {
-        settings.tabCloak = e.target.value;
-        applyTabCloak(settings.tabCloak);
-        saveSettings();
-    });
-
-    // Panic Key Binder
-    const panicBtn = document.getElementById('panic-key-btn');
-    panicBtn.addEventListener('click', () => {
-        panicBtn.textContent = 'Press any key...';
-        panicBtn.classList.add('listening');
-        
-        const keyHandler = (e) => {
-            e.preventDefault();
-            settings.panicKey = e.key;
-            panicBtn.textContent = `Key: ${settings.panicKey}`;
-            panicBtn.classList.remove('listening');
-            saveSettings();
-            document.removeEventListener('keydown', keyHandler);
-        };
-        document.addEventListener('keydown', keyHandler);
-    });
-
-    // Global Panic Key Listener
-    document.addEventListener('keydown', (e) => {
-        if (e.key === settings.panicKey && document.activeElement.tagName !== 'INPUT') {
-            window.location.href = 'https://classroom.google.com';
-        }
     });
 }
