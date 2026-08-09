@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">TcawMath</title>
-    <link rel="icon" id="page-favicon" href="icons/favicon.png">
+    <link rel="icon" id="page-favicon" href="/icons/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
@@ -12,10 +12,10 @@
 <body>
     <!-- Navbar -->
     <header class="navbar">
-        <div class="nav-brand">
+        <a href="index.html" class="nav-brand">
             <img src="icons/logo.png" alt="Logo" class="nav-logo">
             <span>TcawMath</span>
-        </div>
+        </a>
         <div class="nav-search">
             <span class="material-icons">search</span>
             <input type="text" id="search-input" placeholder="Search equations...">
@@ -29,7 +29,6 @@
     <main class="main-container">
         <!-- Category Tabs Bar -->
         <nav class="tabs-bar" id="tabs-bar">
-            <!-- Populated dynamically, but always starts with All -->
             <button class="tab-btn active" data-category="all">All</button>
             <button class="tab-btn" data-category="popular">Popular</button>
             <button class="tab-btn" data-category="recommended">Recommended</button>
