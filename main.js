@@ -25,20 +25,8 @@ function renderGames(gamesObj, searchQuery = '') {
         card.className = 'game-card';
         card.style.animationDelay = `${index * 0.02}s`;
 
-        // Dynamically grab the image from the correct cloud repository
-        let coverSrc = 'icons/favicon.png'; // Fallback
-        if (game.cover) {
-            // Check if the game is in a secondary repo (e.g., "../cloud0/...")
-            if (game.link && game.link.startsWith('../')) {
-                // Extracts the repository name (e.g., "cloud", "cloud0", "cloud1")
-                const repoFolder = game.link.split('/')[1]; 
-                
-                // Constructs the image URL to point to that repository
-                coverSrc = `/${repoFolder}/${game.cover}`; 
-            } else {
-                coverSrc = game.cover;
-            }
-        }
+        // Directly uses the cover filename from games.json
+        const coverSrc = game.cover ? game.cover : 'icons/favicon.png';
 
         card.innerHTML = `
             <img class="game-thumb" src="${coverSrc}" alt="${game.name}" loading="lazy" onerror="this.src='icons/favicon.png'">
@@ -49,7 +37,8 @@ function renderGames(gamesObj, searchQuery = '') {
         `;
 
         card.addEventListener('click', () => {
-            window.location.href = `play.html?id=${encodeURIComponent(id)}&link=${encodeURIComponent(game.link)}`;
+            // Updated to route to learn.html instead of play.html
+            window.location.href = `learn.html?id=${encodeURIComponent(id)}&link=${encodeURIComponent(game.link)}`;
         });
 
         grid.appendChild(card);
