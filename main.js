@@ -1,14 +1,24 @@
 let allGamesData = {};
 let currentCategory = 'all';
 
-// System Settings State
+// System Settings State (Default cloak set to Clever)
 let settings = {
     glow: 50,
     panicKey: '`',
-    tabCloak: 'default'
+    tabCloak: 'clever'
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // 3-second splash screen handler
+    setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
+            setTimeout(() => splash.remove(), 500);
+        }
+    }, 3000);
+
     loadSettings();
     await fetchGames();
     setupEventListeners();
@@ -35,7 +45,10 @@ function applyTabCloak(type) {
     const title = document.getElementById('page-title');
     const favicon = document.getElementById('page-favicon');
     
-    if (type === 'classroom') {
+    if (type === 'clever') {
+        title.textContent = 'Clever | Portal';
+        favicon.href = 'https://clever.com/favicon.ico';
+    } else if (type === 'classroom') {
         title.textContent = 'Classes';
         favicon.href = 'https://ssl.gstatic.com/classroom/favicon.png';
     } else if (type === 'drive') {
@@ -106,7 +119,6 @@ function renderGames(gamesObj, searchQuery = '') {
         card.className = 'game-card';
         card.style.animationDelay = `${index * 0.02}s`;
 
-        // Image path handling
         let coverSrc = '/icons/favicon.png';
         if (game.cover) {
             if (game.link && game.link.startsWith('../')) {
