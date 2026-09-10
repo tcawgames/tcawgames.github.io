@@ -22,7 +22,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Scholastic Sphere High-Quality Educational Overlay */
+/* Scholastic Sphere Educational Overlay */
 .splash-screen {
     position: fixed;
     inset: 0;
@@ -309,16 +309,17 @@ body {
     align-items: center;
     gap: 12px;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--neon-green);
     text-shadow: 0 0 10px var(--neon-glow);
     text-decoration: none;
     cursor: pointer;
+    letter-spacing: -0.5px;
 }
 
 .nav-logo {
-    width: 48px;  
-    height: 48px; 
+    width: 44px;  
+    height: 44px; 
     object-fit: contain;
 }
 
@@ -366,6 +367,51 @@ body {
     border-color: var(--neon-green);
     color: var(--neon-green);
     box-shadow: 0 0 10px var(--neon-glow);
+}
+
+/* Hero Section with Typewriter Animation */
+.typewriter-hero {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
+    padding: 24px 28px;
+    background: rgba(11, 20, 11, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 255, 102, 0.02);
+}
+
+.portal-heading {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--neon-green);
+    text-shadow: 0 0 15px var(--neon-glow);
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.typewriter-container {
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    border-left: 2px solid var(--border-color);
+    padding-left: 20px;
+}
+
+.typewriter-cursor {
+    color: var(--neon-green);
+    font-weight: 700;
+    margin-left: 2px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 /* Main Container */
