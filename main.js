@@ -1,7 +1,9 @@
 let allGamesData = {};
 let currentCategory = 'all';
 
-// Default settings state set to Clever
+// Embedded SVG Clever icon for consistent rendering across browsers
+const cleverIconData = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%231f69ff' d='M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 392c-75.1 0-136-60.9-136-136s60.9-136 136-136 136 60.9 136 136-60.9 136-136 136z'/%3E%3C/svg%3E";
+
 let settings = {
     glow: 50,
     panicKey: '`',
@@ -28,7 +30,6 @@ function loadSettings() {
     const saved = localStorage.getItem('tcawSettings');
     if (saved) settings = JSON.parse(saved);
 
-    // Default to Clever if invalid state
     if (!settings.tabCloak) settings.tabCloak = 'clever';
 
     document.getElementById('glow-slider').value = settings.glow;
@@ -47,7 +48,6 @@ function applyTabCloak(type) {
     const title = document.getElementById('page-title');
     let favicon = document.getElementById('page-favicon');
 
-    // Create favicon element dynamically if missing
     if (!favicon) {
         favicon = document.createElement('link');
         favicon.id = 'page-favicon';
@@ -57,7 +57,7 @@ function applyTabCloak(type) {
     
     if (type === 'clever') {
         title.textContent = 'Clever | Portal';
-        favicon.href = 'https://clever.com/favicon.ico';
+        favicon.href = cleverIconData;
     } else if (type === 'classroom') {
         title.textContent = 'Classes';
         favicon.href = 'https://ssl.gstatic.com/classroom/favicon.png';
