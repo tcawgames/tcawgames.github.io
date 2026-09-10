@@ -78,7 +78,14 @@
     <script>
         const saved = localStorage.getItem('tcawSettings');
         const title = document.getElementById('page-title');
-        const favicon = document.getElementById('page-favicon');
+        let favicon = document.getElementById('page-favicon');
+
+        if (!favicon) {
+            favicon = document.createElement('link');
+            favicon.id = 'page-favicon';
+            favicon.rel = 'icon';
+            document.head.appendChild(favicon);
+        }
 
         let currentCloak = 'clever';
         let panicKey = '`';
@@ -95,7 +102,7 @@
             });
         }
 
-        // Apply Tab Cloak
+        // Apply Cloak
         if (currentCloak === 'clever') {
             title.textContent = 'Clever | Portal';
             favicon.href = 'https://clever.com/favicon.ico';
