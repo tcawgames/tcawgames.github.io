@@ -4,51 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Clever | Portal</title>
-    <link rel="icon" id="page-favicon" href="https://clever.com/favicon.ico">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap">
+    <!-- Embedded SVG Clever Favicon for guaranteed rendering -->
+    <link rel="icon" id="page-favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%231f69ff' d='M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 392c-75.1 0-136-60.9-136-136s60.9-136 136-136 136 60.9 136 136-60.9 136-136 136z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Full-Page Educational Portal Overlay -->
+    <!-- Custom Educational Portal Overlay (StudyVault) -->
     <div id="splash-screen" class="splash-screen">
-        <div class="edu-navbar">
-            <div class="edu-brand">
-                <span class="material-icons" style="color: #1a73e8; font-size: 28px;">school</span>
-                <span class="edu-title">Learning Platform</span>
+        <header class="lh-navbar">
+            <div class="lh-brand">
+                <span class="lh-logo-icon">▲</span>
+                <span class="lh-logo-text">studyvault</span>
             </div>
-            <div class="edu-user">
-                <span class="material-icons" style="color: #5f6368;">notifications</span>
-                <div class="edu-avatar">ST</div>
+            <div class="lh-nav-right">
+                <span class="lh-tagline">Curated academic modules for students</span>
+                <button class="lh-pill-btn">My Library <span class="lh-badge">2</span></button>
             </div>
-        </div>
-        <div class="edu-container">
-            <div class="edu-card">
-                <div class="edu-card-header">
-                    <span class="edu-badge">Algebra I • Period 3</span>
-                    <h2>Unit 4: Linear Equations & Systems</h2>
+        </header>
+
+        <main class="lh-hero">
+            <span class="lh-kicker">INTERACTIVE ACADEMIC REFERENCE CATALOG</span>
+            <h1 class="lh-headline">Unlock deeper<br>understanding<br>across subjects.</h1>
+            <p class="lh-subtext">Access comprehensive, teacher-reviewed study guides in mathematics, biology, world history, computer science, and core analytical reasoning skills.</p>
+            
+            <div class="lh-search-section">
+                <label class="lh-search-label">Explore module index</label>
+                <div class="lh-search-box">
+                    <span class="material-icons lh-search-icon">search</span>
+                    <input type="text" placeholder="Search topic, formula, or course code..." disabled>
+                    <button class="lh-submit-btn">Explore topics &rarr;</button>
                 </div>
-                <div class="edu-card-body">
-                    <div class="edu-status-row">
-                        <span class="material-icons style-icon">assignment</span>
-                        <div>
-                            <strong>Daily Diagnostic Assessment</strong>
-                            <p>Loading interactive problem set...</p>
-                        </div>
-                    </div>
-                    <div class="splash-loader">
-                        <div class="splash-bar"></div>
-                    </div>
-                    <div class="edu-footer-notes">
-                        <span><span class="material-icons inline-icon">schedule</span> Due Today, 11:59 PM</span>
-                        <span>10 Points</span>
-                    </div>
-                </div>
+                <span class="lh-search-subtext">Filter by academic domain, key concept, or unit number</span>
             </div>
-        </div>
+        </main>
     </div>
 
-    <!-- Main Navbar -->
+    <!-- Main Game Portal Navbar -->
     <header class="navbar">
         <a href="index.html" class="nav-brand">
             <img src="icons/logo.png" alt="Logo" class="nav-logo">
