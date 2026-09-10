@@ -1,7 +1,7 @@
 let allGamesData = {};
 let currentCategory = 'all';
 
-// System Settings State (Default cloak set to Clever)
+// Default settings state set to Clever
 let settings = {
     glow: 50,
     panicKey: '`',
@@ -9,17 +9,17 @@ let settings = {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // 3-second splash screen handler
+    loadSettings();
+
+    // 3-second splash screen fade out & removal
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         if (splash) {
-            splash.style.opacity = '0';
-            splash.style.visibility = 'hidden';
-            setTimeout(() => splash.remove(), 500);
+            splash.classList.add('hidden');
+            setTimeout(() => splash.remove(), 600);
         }
     }, 3000);
 
-    loadSettings();
     await fetchGames();
     setupEventListeners();
 });
@@ -28,7 +28,9 @@ function loadSettings() {
     const saved = localStorage.getItem('tcawSettings');
     if (saved) settings = JSON.parse(saved);
 
-    // Apply Settings
+    // Default to Clever if invalid state
+    if (!settings.tabCloak) settings.tabCloak = 'clever';
+
     document.getElementById('glow-slider').value = settings.glow;
     document.documentElement.style.setProperty('--neon-glow', `rgba(0, 255, 102, ${settings.glow / 200})`);
     
@@ -43,7 +45,15 @@ function saveSettings() {
 
 function applyTabCloak(type) {
     const title = document.getElementById('page-title');
-    const favicon = document.getElementById('page-favicon');
+    let favicon = document.getElementById('page-favicon');
+
+    // Create favicon element dynamically if missing
+    if (!favicon) {
+        favicon = document.createElement('link');
+        favicon.id = 'page-favicon';
+        favicon.rel = 'icon';
+        document.head.appendChild(favicon);
+    }
     
     if (type === 'clever') {
         title.textContent = 'Clever | Portal';
