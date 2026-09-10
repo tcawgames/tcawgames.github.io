@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">TcawMath</title>
-    <link rel="icon" id="page-favicon" href="/icons/favicon.png">
+    <title id="page-title">Clever | Portal</title>
+    <link rel="icon" id="page-favicon" href="https://clever.com/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Educational Splash Screen (3 Seconds, No Redirect) -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-header">
+                <span class="material-icons" style="font-size: 36px; color: #1a73e8;">school</span>
+                <h2>Algebra I - Daily Practice</h2>
+            </div>
+            <p>Loading interactive math module: Solving Multi-Step Equations...</p>
+            <div class="splash-loader"><div class="splash-bar"></div></div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <header class="navbar">
         <a href="index.html" class="nav-brand">
@@ -54,6 +66,7 @@
                         <span>Hide the site title and icon</span>
                     </div>
                     <select id="tab-cloak" class="setting-select">
+                        <option value="clever">Clever Portal</option>
                         <option value="default">TcawMath</option>
                         <option value="classroom">Google Classroom</option>
                         <option value="drive">Google Drive</option>
