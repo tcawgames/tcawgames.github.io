@@ -22,20 +22,22 @@ body {
     overflow-x: hidden;
 }
 
-/* Educational Splash Overlay */
+/* Scholastic Sphere High-Quality Educational Overlay */
 .splash-screen {
     position: fixed;
     inset: 0;
-    background-color: #e8e6d9;
-    color: #1a2b2b;
+    background-color: #f5f3e9;
+    background-image: radial-gradient(#e2decb 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: #162424;
     display: flex;
     flex-direction: column;
     z-index: 999999;
     opacity: 1;
     visibility: visible;
     transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s ease;
-    font-family: 'Inter', sans-serif;
-    padding: 24px 80px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 32px 90px;
     overflow-y: auto;
 }
 
@@ -50,121 +52,192 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .lh-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.lh-logo-icon {
-    color: #1f69ff;
-    font-size: 1.1rem;
+.lh-logo-badge {
+    background: #004b87;
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 75, 135, 0.25);
+}
+
+.lh-logo-badge .material-icons {
+    font-size: 20px;
 }
 
 .lh-logo-text {
     font-weight: 800;
-    font-size: 1.4rem;
-    color: #111e1e;
+    font-size: 1.35rem;
+    color: #162424;
     letter-spacing: -0.5px;
+}
+
+.lh-logo-accent {
+    color: #004b87;
 }
 
 .lh-nav-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
 }
 
 .lh-tagline {
     font-size: 0.85rem;
-    color: #4a5a5a;
+    color: #526363;
+    font-weight: 500;
 }
 
 .lh-pill-btn {
-    background: transparent;
-    border: 1px solid #1a2b2b;
-    padding: 8px 16px;
-    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #d8d4c4;
+    padding: 8px 18px;
+    border-radius: 24px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #1a2b2b;
+    color: #162424;
     display: flex;
     align-items: center;
     gap: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.btn-icon {
+    font-size: 18px;
+    color: #004b87;
 }
 
 .lh-badge {
-    background: #1f69ff;
+    background: #004b87;
     color: #fff;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
 .lh-hero {
-    max-width: 650px;
+    max-width: 720px;
     margin-top: 10px;
 }
 
-.lh-kicker {
+.lh-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 75, 135, 0.08);
+    border: 1px solid rgba(0, 75, 135, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #1f69ff;
-    display: block;
-    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+    color: #004b87;
+    margin-bottom: 24px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #004b87;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 rgba(0, 75, 135, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 75, 135, 0.4); }
+    70% { box-shadow: 0 0 0 8px rgba(0, 75, 135, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 75, 135, 0); }
 }
 
 .lh-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 4rem;
+    line-height: 1.08;
+    color: #162424;
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+.italic-serif {
     font-family: 'DM Serif Display', serif;
-    font-size: 4.2rem;
-    line-height: 1.05;
-    color: #111e1e;
-    margin-bottom: 24px;
     font-weight: 400;
+    font-style: italic;
+    color: #004b87;
 }
 
 .lh-subtext {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #3c4c4c;
-    margin-bottom: 32px;
-    max-width: 580px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #435454;
+    margin-bottom: 36px;
+    max-width: 620px;
 }
 
-.lh-search-section {
+.lh-search-card {
+    background: #ffffff;
+    border: 1px solid #e0dccb;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 12px 32px rgba(22, 36, 36, 0.06);
+    max-width: 640px;
+}
+
+.lh-search-header {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .lh-search-label {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    color: #1a2b2b;
+    color: #162424;
+}
+
+.lh-status-tag {
+    font-size: 0.75rem;
+    color: #526363;
+    font-weight: 600;
+    background: #f5f3e9;
+    padding: 3px 8px;
+    border-radius: 6px;
 }
 
 .lh-search-box {
-    background: #ffffff;
-    border: 2px solid #2b4242;
-    border-radius: 28px;
+    background: #fcfbf7;
+    border: 1.5px solid #d8d4c4;
+    border-radius: 14px;
     padding: 6px 6px 6px 16px;
     display: flex;
     align-items: center;
-    max-width: 520px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 16px;
 }
 
 .lh-search-icon {
-    color: #7a8a8a;
-    margin-right: 8px;
-    font-size: 1.2rem;
+    color: #8c9c9c;
+    margin-right: 10px;
+    font-size: 1.3rem;
 }
 
 .lh-search-box input {
@@ -172,23 +245,49 @@ body {
     outline: none;
     background: transparent;
     flex: 1;
-    font-size: 0.9rem;
-    color: #1a2b2b;
+    font-size: 0.95rem;
+    color: #162424;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .lh-submit-btn {
-    background: #2b4242;
+    background: #004b87;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 600;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.lh-search-subtext {
+.arrow-icon {
+    font-size: 16px;
+}
+
+.lh-chip-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chip-label {
     font-size: 0.75rem;
-    color: #6a7a7a;
+    font-weight: 600;
+    color: #728282;
+}
+
+.topic-chip {
+    background: #f0ede1;
+    color: #334444;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
 }
 
 /* Navbar */
