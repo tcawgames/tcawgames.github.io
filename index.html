@@ -5,24 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Clever | Portal</title>
     <link rel="icon" id="page-favicon" href="https://clever.com/favicon.ico">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Educational Splash Screen (3 Seconds, No Redirect) -->
+    <!-- Full-Page Educational Portal Overlay -->
     <div id="splash-screen" class="splash-screen">
-        <div class="splash-content">
-            <div class="splash-header">
-                <span class="material-icons" style="font-size: 36px; color: #1a73e8;">school</span>
-                <h2>Algebra I - Daily Practice</h2>
+        <div class="edu-navbar">
+            <div class="edu-brand">
+                <span class="material-icons" style="color: #1a73e8; font-size: 28px;">school</span>
+                <span class="edu-title">Learning Platform</span>
             </div>
-            <p>Loading interactive math module: Solving Multi-Step Equations...</p>
-            <div class="splash-loader"><div class="splash-bar"></div></div>
+            <div class="edu-user">
+                <span class="material-icons" style="color: #5f6368;">notifications</span>
+                <div class="edu-avatar">ST</div>
+            </div>
+        </div>
+        <div class="edu-container">
+            <div class="edu-card">
+                <div class="edu-card-header">
+                    <span class="edu-badge">Algebra I • Period 3</span>
+                    <h2>Unit 4: Linear Equations & Systems</h2>
+                </div>
+                <div class="edu-card-body">
+                    <div class="edu-status-row">
+                        <span class="material-icons style-icon">assignment</span>
+                        <div>
+                            <strong>Daily Diagnostic Assessment</strong>
+                            <p>Loading interactive problem set...</p>
+                        </div>
+                    </div>
+                    <div class="splash-loader">
+                        <div class="splash-bar"></div>
+                    </div>
+                    <div class="edu-footer-notes">
+                        <span><span class="material-icons inline-icon">schedule</span> Due Today, 11:59 PM</span>
+                        <span>10 Points</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Navbar -->
+    <!-- Main Navbar -->
     <header class="navbar">
         <a href="index.html" class="nav-brand">
             <img src="icons/logo.png" alt="Logo" class="nav-logo">
