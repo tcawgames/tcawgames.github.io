@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">TcawMath</title>
-    <link rel="icon" id="page-favicon" href="icons/favicon.png">
+    <title id="page-title">Clever | Portal</title>
+    <link rel="icon" id="page-favicon" href="https://clever.com/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
@@ -76,26 +76,38 @@
     </div>
 
     <script>
-        // Apply saved settings for Panic Key and Tab Cloak
         const saved = localStorage.getItem('tcawSettings');
+        const title = document.getElementById('page-title');
+        const favicon = document.getElementById('page-favicon');
+
+        let currentCloak = 'clever';
+        let panicKey = '`';
+
         if (saved) {
             const settings = JSON.parse(saved);
-            const title = document.getElementById('page-title');
-            const favicon = document.getElementById('page-favicon');
-            
-            if (settings.tabCloak === 'classroom') {
-                title.textContent = 'Classes';
-                favicon.href = 'https://ssl.gstatic.com/classroom/favicon.png';
-            } else if (settings.tabCloak === 'drive') {
-                title.textContent = 'My Drive - Google Drive';
-                favicon.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
-            }
+            currentCloak = settings.tabCloak || 'clever';
+            panicKey = settings.panicKey || '`';
 
             document.addEventListener('keydown', (e) => {
-                if (e.key === settings.panicKey && document.activeElement.tagName !== 'INPUT') {
+                if (e.key === panicKey && document.activeElement.tagName !== 'INPUT') {
                     window.location.href = 'https://classroom.google.com';
                 }
             });
+        }
+
+        // Apply Tab Cloak
+        if (currentCloak === 'clever') {
+            title.textContent = 'Clever | Portal';
+            favicon.href = 'https://clever.com/favicon.ico';
+        } else if (currentCloak === 'classroom') {
+            title.textContent = 'Classes';
+            favicon.href = 'https://ssl.gstatic.com/classroom/favicon.png';
+        } else if (currentCloak === 'drive') {
+            title.textContent = 'My Drive - Google Drive';
+            favicon.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
+        } else {
+            title.textContent = 'TcawMath';
+            favicon.href = '/icons/favicon.png';
         }
 
         const params = new URLSearchParams(window.location.search);
@@ -107,12 +119,10 @@
         }
 
         if (gameLink) {
-            // Clean up relative path formatting for the domain root
             if (gameLink.startsWith('../')) {
                 gameLink = gameLink.substring(2); 
             }
 
-            // Flash Emulator integration for .swf files
             if (gameLink.endsWith('.swf')) {
                 document.getElementById('gameiframe').style.display = 'none';
                 
@@ -130,7 +140,6 @@
                     player.load(gameLink); 
                 };
             } else {
-                // Ensure proper trailing slash for HTML game directories
                 if (!gameLink.split('/').pop().includes('.') && !gameLink.endsWith('/')) {
                     gameLink += '/';
                 }
