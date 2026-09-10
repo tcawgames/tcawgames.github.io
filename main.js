@@ -1,9 +1,7 @@
 let allGamesData = {};
 let currentCategory = 'all';
 
-// Embedded SVG Clever icon for consistent rendering across browsers
-const cleverIconData = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%231f69ff' d='M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 392c-75.1 0-136-60.9-136-136s60.9-136 136-136 136 60.9 136 136-60.9 136-136 136z'/%3E%3C/svg%3E";
-
+// Default settings state set to Clever
 let settings = {
     glow: 50,
     panicKey: '`',
@@ -57,7 +55,7 @@ function applyTabCloak(type) {
     
     if (type === 'clever') {
         title.textContent = 'Clever | Portal';
-        favicon.href = cleverIconData;
+        favicon.href = 'https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png';
     } else if (type === 'classroom') {
         title.textContent = 'Classes';
         favicon.href = 'https://ssl.gstatic.com/classroom/favicon.png';
