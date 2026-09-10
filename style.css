@@ -22,6 +22,65 @@ body {
     overflow-x: hidden;
 }
 
+/* Educational Splash Screen */
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    color: #202124;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.splash-content {
+    text-align: center;
+    max-width: 420px;
+    padding: 32px;
+}
+
+.splash-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.splash-header h2 {
+    font-size: 1.4rem;
+    color: #202124;
+    font-weight: 600;
+}
+
+.splash-content p {
+    color: #5f6368;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.splash-loader {
+    width: 100%;
+    height: 4px;
+    background: #e8eaed;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.splash-bar {
+    width: 100%;
+    height: 100%;
+    background: #1a73e8;
+    animation: loadBar 3s linear forwards;
+}
+
+@keyframes loadBar {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
 /* Navbar */
 .navbar {
     display: flex;
@@ -49,8 +108,8 @@ body {
 }
 
 .nav-logo {
-    width: 48px;  /* Increased size */
-    height: 48px; /* Increased size */
+    width: 48px;  
+    height: 48px; 
     object-fit: contain;
 }
 
