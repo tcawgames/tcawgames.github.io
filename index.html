@@ -4,44 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Clever | Portal</title>
-    <!-- Embedded SVG Clever Favicon for guaranteed rendering -->
-    <link rel="icon" id="page-favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%231f69ff' d='M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 392c-75.1 0-136-60.9-136-136s60.9-136 136-136 136 60.9 136 136-60.9 136-136 136z'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="icon" id="page-favicon" href="https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Custom Educational Portal Overlay (StudyVault) -->
+    <!-- 3-Second Premium Educational Overlay (Scholastic Sphere) -->
     <div id="splash-screen" class="splash-screen">
         <header class="lh-navbar">
             <div class="lh-brand">
-                <span class="lh-logo-icon">▲</span>
-                <span class="lh-logo-text">studyvault</span>
+                <div class="lh-logo-badge">
+                    <span class="material-icons">auto_stories</span>
+                </div>
+                <span class="lh-logo-text">scholastic<span class="lh-logo-accent">sphere</span></span>
             </div>
             <div class="lh-nav-right">
-                <span class="lh-tagline">Curated academic modules for students</span>
-                <button class="lh-pill-btn">My Library <span class="lh-badge">2</span></button>
+                <span class="lh-tagline">Curated academic modules & verified study labs</span>
+                <button class="lh-pill-btn">
+                    <span class="material-icons btn-icon">bookmark_border</span>
+                    Bookmarked sets
+                    <span class="lh-badge">0</span>
+                </button>
             </div>
         </header>
 
         <main class="lh-hero">
-            <span class="lh-kicker">INTERACTIVE ACADEMIC REFERENCE CATALOG</span>
-            <h1 class="lh-headline">Unlock deeper<br>understanding<br>across subjects.</h1>
-            <p class="lh-subtext">Access comprehensive, teacher-reviewed study guides in mathematics, biology, world history, computer science, and core analytical reasoning skills.</p>
+            <div class="lh-badge-pill">
+                <span class="pulse-dot"></span>
+                KNOWLEDGE REPOSITORY & ACADEMIC LAB
+            </div>
+            <h1 class="lh-headline">Expand what you know,<br><span class="italic-serif">every single day.</span></h1>
+            <p class="lh-subtext">Access structured, expert-verified course materials across algebra, geometry, physical sciences, world history, and foundational computing concepts.</p>
             
-            <div class="lh-search-section">
-                <label class="lh-search-label">Explore module index</label>
+            <div class="lh-search-card">
+                <div class="lh-search-header">
+                    <label class="lh-search-label">Explore the curriculum database</label>
+                    <span class="lh-status-tag">v4.2 Live Catalog</span>
+                </div>
                 <div class="lh-search-box">
                     <span class="material-icons lh-search-icon">search</span>
-                    <input type="text" placeholder="Search topic, formula, or course code..." disabled>
-                    <button class="lh-submit-btn">Explore topics &rarr;</button>
+                    <input type="text" placeholder="Search topics, formulas, or module IDs..." disabled>
+                    <button class="lh-submit-btn">
+                        Search modules
+                        <span class="material-icons arrow-icon">arrow_forward</span>
+                    </button>
                 </div>
-                <span class="lh-search-subtext">Filter by academic domain, key concept, or unit number</span>
+                <div class="lh-chip-row">
+                    <span class="chip-label">Quick topics:</span>
+                    <span class="topic-chip">Linear Equations</span>
+                    <span class="topic-chip">Cell Biology</span>
+                    <span class="topic-chip">Modern World History</span>
+                </div>
             </div>
         </main>
     </div>
 
-    <!-- Main Game Portal Navbar -->
+    <!-- Main Portal Navbar -->
     <header class="navbar">
         <a href="index.html" class="nav-brand">
             <img src="icons/logo.png" alt="Logo" class="nav-logo">
