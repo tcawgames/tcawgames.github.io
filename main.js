@@ -8,6 +8,14 @@ let settings = {
     tabCloak: 'clever'
 };
 
+// Typewriter phrases to cycle through
+const typewriterPhrases = [
+    "unblocked web catalog & retro library.",
+    "instant tab disguise with clever & drive cloaks.",
+    "panic key routing directly to Google Classroom.",
+    "HTML5 canvas, flash ruffle & multi-repo integration."
+];
+
 document.addEventListener('DOMContentLoaded', async () => {
     loadSettings();
 
@@ -20,9 +28,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }, 3000);
 
+    startTypewriter();
     await fetchGames();
     setupEventListeners();
 });
+
+// Backspace Typewriter Animation Engine
+function startTypewriter() {
+    const target = document.getElementById('typewriter-text');
+    if (!target) return;
+
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentPhrase = typewriterPhrases[phraseIdx];
+        
+        if (isDeleting) {
+            target.textContent = currentPhrase.substring(0, charIdx - 1);
+            charIdx--;
+        } else {
+            target.textContent = currentPhrase.substring(0, charIdx + 1);
+            charIdx++;
+        }
+
+        let typeSpeed = isDeleting ? 30 : 60;
+
+        if (!isDeleting && charIdx === currentPhrase.length) {
+            typeSpeed = 2200; // Pause at full phrase
+            isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+            isDeleting = false;
+            phraseIdx = (phraseIdx + 1) % typewriterPhrases.length;
+            typeSpeed = 400; // Pause before typing next phrase
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    type();
+}
 
 function loadSettings() {
     const saved = localStorage.getItem('tcawSettings');
@@ -63,7 +109,7 @@ function applyTabCloak(type) {
         title.textContent = 'My Drive - Google Drive';
         favicon.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
     } else {
-        title.textContent = 'TcawMath';
+        title.textContent = 'tcaw';
         favicon.href = '/icons/favicon.png';
     }
 }
@@ -100,6 +146,17 @@ function buildCategories() {
     });
 }
 
+// Generate an SVG data URI for missing game covers
+function generateDynamicCover(name) {
+    const initial = (name || 'G').charAt(0).toUpperCase();
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+        <rect width="200" height="200" fill="#0b140b"/>
+        <circle cx="100" cy="100" r="70" fill="#102610" stroke="#00ff66" stroke-width="2" stroke-dasharray="4"/>
+        <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="#00ff66" font-family="Poppins, sans-serif" font-size="64" font-weight="700">${initial}</text>
+    </svg>`;
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+}
+
 function renderGames(gamesObj, searchQuery = '') {
     const grid = document.getElementById('game-grid');
     grid.innerHTML = '';
@@ -127,7 +184,7 @@ function renderGames(gamesObj, searchQuery = '') {
         card.className = 'game-card';
         card.style.animationDelay = `${index * 0.02}s`;
 
-        let coverSrc = '/icons/favicon.png';
+        let coverSrc = generateDynamicCover(game.name);
         if (game.cover) {
             if (game.link && game.link.startsWith('../')) {
                 const repoFolder = game.link.split('/')[1]; 
@@ -137,8 +194,10 @@ function renderGames(gamesObj, searchQuery = '') {
             }
         }
 
+        const fallbackSvg = generateDynamicCover(game.name);
+
         card.innerHTML = `
-            <img class="game-thumb" src="${coverSrc}" alt="${game.name}" loading="lazy" onerror="this.src='/icons/favicon.png'">
+            <img class="game-thumb" src="${coverSrc}" alt="${game.name}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackSvg}';">
             <div class="game-info">
                 <h3 class="game-title">${game.name}</h3>
                 <span class="game-category">${game.catagory || 'casual'}</span>
