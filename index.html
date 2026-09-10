@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Clever | Portal</title>
     <link rel="icon" id="page-favicon" href="https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -63,8 +63,8 @@
     <!-- Main Portal Navbar -->
     <header class="navbar">
         <a href="index.html" class="nav-brand">
-            <img src="icons/logo.png" alt="Logo" class="nav-logo">
-            <span>TcawMath</span>
+            <img src="icons/logo.png" alt="Logo" class="nav-logo" onerror="this.style.display='none'">
+            <span>tcaw</span>
         </a>
         <div class="nav-search">
             <span class="material-icons">search</span>
@@ -77,6 +77,14 @@
 
     <!-- Main Container -->
     <main class="main-container">
+        <!-- Hero Header with Dynamic Typewriter Animation -->
+        <section class="typewriter-hero">
+            <h1 class="portal-heading">tcaw</h1>
+            <div class="typewriter-container">
+                <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+            </div>
+        </section>
+
         <!-- Category Tabs Bar -->
         <nav class="tabs-bar" id="tabs-bar">
             <button class="tab-btn active" data-category="all">All</button>
@@ -105,7 +113,7 @@
                     </div>
                     <select id="tab-cloak" class="setting-select">
                         <option value="clever">Clever Portal</option>
-                        <option value="default">TcawMath</option>
+                        <option value="default">tcaw</option>
                         <option value="classroom">Google Classroom</option>
                         <option value="drive">Google Drive</option>
                     </select>
