@@ -15,7 +15,7 @@ const typewriterPhrases = [
     "HTML5 canvas, flash ruffle & multi-repo integration."
 ];
 
-// Local meme image assets
+// Local meme image assets for about:blank Easter egg
 const memeImages = [
     "images/sog1.jpg",
     "images/sog2.png",
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
 });
 
-// Detection for about:blank & Embedded Framing
+// Robust Detection for about:blank & Embedded Framing
 function isInAboutBlank() {
     try {
         return (
@@ -98,7 +98,7 @@ function spawnFallingMeme() {
     img.src = randomImg;
     img.className = 'falling-meme';
 
-    // Explicit inline styling to guarantee high visibility
+    // Inline styling to guarantee highest visibility layer above all UI
     img.style.position = 'fixed';
     img.style.top = '-150px';
     img.style.zIndex = '9999999';
@@ -109,13 +109,11 @@ function spawnFallingMeme() {
     img.style.borderRadius = '12px';
     img.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.6)';
 
-    // Randomize horizontal start position across screen
     const randomX = Math.random() * (window.innerWidth - 140);
     img.style.left = `${randomX}px`;
 
     document.body.appendChild(img);
 
-    // Clean up element after animation completes
     setTimeout(() => {
         if (img && img.parentNode) {
             img.remove();
@@ -180,7 +178,8 @@ function showView(viewName) {
     }
 }
 
-function launchGame(id, game) {
+// Anti-Filter Game Launcher with about:blank HTML Injections
+async function launchGame(id, game) {
     const playerView = document.getElementById('player-view');
     const titleDisplay = document.getElementById('game-title-display');
     const container = document.getElementById('player-frame-container');
@@ -194,6 +193,7 @@ function launchGame(id, game) {
         gameLink = gameLink.substring(2);
     }
 
+    // Flash SWF Ruffle Engine Integration
     if (gameLink.endsWith('.swf')) {
         iframe.style.display = 'none';
         
@@ -216,7 +216,33 @@ function launchGame(id, game) {
         if (!gameLink.split('/').pop().includes('.') && !gameLink.endsWith('/')) {
             gameLink += '/';
         }
-        iframe.src = gameLink;
+
+        try {
+            // Fetch game document directly via JavaScript
+            const response = await fetch(gameLink);
+            let htmlContent = await response.text();
+
+            // Inject base tag to resolve relative asset paths (CSS, JS, images)
+            const baseUrl = new URL(gameLink, window.location.href).href;
+            if (htmlContent.includes('<head>')) {
+                htmlContent = htmlContent.replace('<head>', `<head><base href="${baseUrl}">`);
+            } else {
+                htmlContent = `<head><base href="${baseUrl}"></head>` + htmlContent;
+            }
+
+            // Set iframe src to about:blank and write document memory
+            iframe.src = "about:blank";
+            const doc = iframe.contentWindow || iframe.contentDocument;
+            const targetDoc = doc.document || doc;
+            
+            targetDoc.open();
+            targetDoc.write(htmlContent);
+            targetDoc.close();
+
+        } catch (err) {
+            console.warn("Fetch blocked by CORS policy, defaulting to direct src load:", err);
+            iframe.src = gameLink;
+        }
     }
 }
 
@@ -226,7 +252,7 @@ function closePlayer() {
     const ruffleInstance = document.getElementById('ruffle-player-instance');
 
     if (ruffleInstance) ruffleInstance.remove();
-    iframe.src = '';
+    iframe.src = 'about:blank';
     playerView.style.display = 'none';
 }
 
