@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     checkAboutBlankStatus();
 
     // Auto-launch about:blank if setting enabled and not already inside iframe/about:blank
-    if (settings.autoAboutBlank && window.location.protocol !== 'about:' && window.self === window.top) {
+    if (settings.autoAboutBlank && !isInAboutBlank()) {
         openAboutBlank();
     }
 
@@ -54,12 +54,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
 });
 
-// Detect if page is running inside about:blank
+// Robust Detection for about:blank & Embedded Framing
 function isInAboutBlank() {
     try {
-        return window.location.protocol === 'about:' || window.top.location.protocol === 'about:';
+        return (
+            window.location.protocol === 'about:' ||
+            window.origin === 'null' ||
+            (window.top && window.top.location.protocol === 'about:') ||
+            window.self !== window.top
+        );
     } catch (e) {
-        return true; // Cross-origin top window context inside about:blank
+        // Cross-origin restriction triggered when embedded inside about:blank iframe
+        return true; 
     }
 }
 
@@ -71,7 +77,7 @@ function checkAboutBlankStatus() {
 
         if (card && title && desc) {
             card.classList.add('in-about-blank');
-            title.textContent = "you are already in about blank so theres honestly no point in clicking this! ";
+            title.textContent = "you are already in about blank so theres honestly no point in clicking this!";
             desc.textContent = "Click at your own risk...";
         }
     }
@@ -93,7 +99,7 @@ function spawnFallingMeme() {
     img.src = randomImg;
     img.className = 'falling-meme';
 
-    // Randomize horizontal start position
+    // Randomize horizontal start position across screen
     const randomX = Math.random() * (window.innerWidth - 120);
     img.style.left = `${randomX}px`;
 
@@ -110,7 +116,35 @@ function playRandomSound() {
         lastSoundTime = now;
         const randomSound = memeSounds[Math.floor(Math.random() * memeSounds.length)];
         const audio = new Audio(randomSound);
-        audio.play().catch(e => console.log('Audio playback prevented or missing file:', e));
+        audio.play().catch(e => console.log('Audio playback blocked or file missing:', e));
+    }
+}
+
+// Open about:blank & Close Current Tab
+function openAboutBlank() {
+    const win = window.open('about:blank', '_blank');
+    if (win) {
+        win.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Clever | Portal</title>
+                <link rel="icon" href="https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png">
+                <style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#050a06;}</style>
+            </head>
+            <body>
+                <iframe src="${window.location.href}" style="width:100%;height:100%;border:none;"></iframe>
+            </body>
+            </html>
+        `);
+
+        // Close old tab (or redirect to Google Classroom if browser blocks closing)
+        setTimeout(() => {
+            window.close();
+            setTimeout(() => {
+                window.location.href = "https://classroom.google.com";
+            }, 100);
+        }, 100);
     }
 }
 
@@ -129,25 +163,6 @@ function showView(viewName) {
         retroSec.style.display = 'block';
     } else if (viewName === 'proxy') {
         proxySec.style.display = 'block';
-    }
-}
-
-function openAboutBlank() {
-    const win = window.open('about:blank', '_blank');
-    if (win) {
-        win.document.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Clever | Portal</title>
-                <link rel="icon" href="https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png">
-                <style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden;}</style>
-            </head>
-            <body>
-                <iframe src="${window.location.href}" style="width:100%;height:100%;border:none;"></iframe>
-            </body>
-            </html>
-        `);
     }
 }
 
