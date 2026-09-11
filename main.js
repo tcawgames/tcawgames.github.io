@@ -8,7 +8,6 @@ let settings = {
     tabCloak: 'clever'
 };
 
-// Typewriter phrases to cycle through
 const typewriterPhrases = [
     "unblocked web catalog & retro library.",
     "instant tab disguise with clever & drive cloaks.",
@@ -19,7 +18,7 @@ const typewriterPhrases = [
 document.addEventListener('DOMContentLoaded', async () => {
     loadSettings();
 
-    // 3-second splash screen fade out & removal
+    // 3-second splash screen fade out
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         if (splash) {
@@ -33,6 +32,103 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
 });
 
+// View Routing Switcher (No URL changes)
+function showView(viewName) {
+    const flashSec = document.getElementById('flash-games-section');
+    const retroSec = document.getElementById('retro-console-section');
+    const proxySec = document.getElementById('proxy-section');
+
+    // Reset visibility
+    flashSec.style.display = 'none';
+    retroSec.style.display = 'none';
+    proxySec.style.display = 'none';
+
+    if (viewName === 'flash-games') {
+        flashSec.style.display = 'block';
+    } else if (viewName === 'retro-console') {
+        retroSec.style.display = 'block';
+    } else if (viewName === 'proxy') {
+        proxySec.style.display = 'block';
+    }
+}
+
+// Open site in about:blank tab cloak
+function openAboutBlank() {
+    const win = window.open('about:blank', '_blank');
+    if (win) {
+        win.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Clever | Portal</title>
+                <link rel="icon" href="https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png">
+                <style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden;}</style>
+            </head>
+            <body>
+                <iframe src="${window.location.href}" style="width:100%;height:100%;border:none;"></iframe>
+            </body>
+            </html>
+        `);
+    }
+}
+
+// Single-Page Game Launcher
+function launchGame(id, game) {
+    const playerView = document.getElementById('player-view');
+    const titleDisplay = document.getElementById('game-title-display');
+    const container = document.getElementById('player-frame-container');
+    const iframe = document.getElementById('gameiframe');
+
+    titleDisplay.textContent = game.name.toUpperCase();
+    playerView.style.display = 'flex';
+
+    let gameLink = game.link;
+    if (gameLink.startsWith('../')) {
+        gameLink = gameLink.substring(2);
+    }
+
+    // Flash SWF Ruffle Engine Integration
+    if (gameLink.endsWith('.swf')) {
+        iframe.style.display = 'none';
+        
+        const ruffleScript = document.createElement('script');
+        ruffleScript.src = "https://unpkg.com/@ruffle-rs/ruffle";
+        document.head.appendChild(ruffleScript);
+
+        ruffleScript.onload = () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            player.style.width = '100%';
+            player.style.height = '100%';
+            player.style.border = 'none';
+            player.id = 'ruffle-player-instance';
+            container.appendChild(player);
+            player.load(gameLink);
+        };
+    } else {
+        iframe.style.display = 'block';
+        if (!gameLink.split('/').pop().includes('.') && !gameLink.endsWith('/')) {
+            gameLink += '/';
+        }
+        iframe.src = gameLink;
+    }
+}
+
+function closePlayer() {
+    const playerView = document.getElementById('player-view');
+    const iframe = document.getElementById('gameiframe');
+    const ruffleInstance = document.getElementById('ruffle-player-instance');
+
+    if (ruffleInstance) ruffleInstance.remove();
+    iframe.src = '';
+    playerView.style.display = 'none';
+}
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else if (document.exitFullscreen) document.exitFullscreen();
+}
+
 // Backspace Typewriter Animation Engine
 function startTypewriter() {
     const target = document.getElementById('typewriter-text');
@@ -44,7 +140,7 @@ function startTypewriter() {
 
     function type() {
         const currentPhrase = typewriterPhrases[phraseIdx];
-        
+
         if (isDeleting) {
             target.textContent = currentPhrase.substring(0, charIdx - 1);
             charIdx--;
@@ -56,12 +152,12 @@ function startTypewriter() {
         let typeSpeed = isDeleting ? 30 : 60;
 
         if (!isDeleting && charIdx === currentPhrase.length) {
-            typeSpeed = 2200; // Pause at full phrase
+            typeSpeed = 2200;
             isDeleting = true;
         } else if (isDeleting && charIdx === 0) {
             isDeleting = false;
             phraseIdx = (phraseIdx + 1) % typewriterPhrases.length;
-            typeSpeed = 400; // Pause before typing next phrase
+            typeSpeed = 400;
         }
 
         setTimeout(type, typeSpeed);
@@ -78,7 +174,7 @@ function loadSettings() {
 
     document.getElementById('glow-slider').value = settings.glow;
     document.documentElement.style.setProperty('--neon-glow', `rgba(0, 255, 102, ${settings.glow / 200})`);
-    
+
     document.getElementById('panic-key-btn').textContent = `Key: ${settings.panicKey}`;
     document.getElementById('tab-cloak').value = settings.tabCloak;
     applyTabCloak(settings.tabCloak);
@@ -98,7 +194,7 @@ function applyTabCloak(type) {
         favicon.rel = 'icon';
         document.head.appendChild(favicon);
     }
-    
+
     if (type === 'clever') {
         title.textContent = 'Clever | Portal';
         favicon.href = 'https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png';
@@ -109,7 +205,7 @@ function applyTabCloak(type) {
         title.textContent = 'My Drive - Google Drive';
         favicon.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
     } else {
-        title.textContent = 'tcaw';
+        title.textContent = 'tcaw.';
         favicon.href = '/icons/favicon.png';
     }
 }
@@ -137,7 +233,7 @@ function buildCategories() {
     const tabsBar = document.getElementById('tabs-bar');
     categoriesSet.forEach(cat => {
         if (['casual', 'popular', 'recommended', 'all'].includes(cat.toLowerCase())) return;
-        
+
         const btn = document.createElement('button');
         btn.className = 'tab-btn';
         btn.dataset.category = cat.toLowerCase();
@@ -146,7 +242,6 @@ function buildCategories() {
     });
 }
 
-// Generate an SVG data URI for missing game covers
 function generateDynamicCover(name) {
     const initial = (name || 'G').charAt(0).toUpperCase();
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
@@ -187,7 +282,7 @@ function renderGames(gamesObj, searchQuery = '') {
         let coverSrc = generateDynamicCover(game.name);
         if (game.cover) {
             if (game.link && game.link.startsWith('../')) {
-                const repoFolder = game.link.split('/')[1]; 
+                const repoFolder = game.link.split('/')[1];
                 coverSrc = `/${repoFolder}/${game.cover}`;
             } else {
                 coverSrc = game.cover;
@@ -204,10 +299,7 @@ function renderGames(gamesObj, searchQuery = '') {
             </div>
         `;
 
-        card.addEventListener('click', () => {
-            window.location.href = `learn?id=${encodeURIComponent(id)}&link=${encodeURIComponent(game.link)}`;
-        });
-
+        card.addEventListener('click', () => launchGame(id, game));
         grid.appendChild(card);
     });
 }
@@ -247,7 +339,7 @@ function setupEventListeners() {
     panicBtn.addEventListener('click', () => {
         panicBtn.textContent = 'Press any key...';
         panicBtn.classList.add('listening');
-        
+
         const keyHandler = (e) => {
             e.preventDefault();
             settings.panicKey = e.key;
