@@ -110,13 +110,13 @@
                 </div>
             </div>
 
-            <div class="option-card" onclick="openAboutBlank()">
+            <div class="option-card" id="about-blank-card" onclick="handleAboutBlankClick()">
                 <div class="option-icon-wrapper">
                     <span class="material-icons">open_in_new</span>
                 </div>
                 <div class="option-content">
-                    <h3>Open in about:blank</h3>
-                    <p>Cloak site inside a clean browser data frame.</p>
+                    <h3 id="about-blank-title">Open in about:blank</h3>
+                    <p id="about-blank-desc">Cloak site inside a clean browser data frame.</p>
                 </div>
             </div>
 
@@ -131,7 +131,7 @@
             </div>
         </section>
 
-        <!-- Flash Games Section (Hidden until selected) -->
+        <!-- Flash Games Section -->
         <div id="flash-games-section" class="portal-section" style="display: none;">
             <div class="section-header-bar">
                 <h2>Flash & HTML5 Catalog</h2>
@@ -151,7 +151,7 @@
             </section>
         </div>
 
-        <!-- Retro Console Section (Hidden until selected) -->
+        <!-- Retro Console Section -->
         <div id="retro-console-section" class="portal-section" style="display: none;">
             <div class="section-header-bar">
                 <h2>Retro Console Vault</h2>
@@ -166,10 +166,10 @@
             </div>
         </div>
 
-        <!-- Proxy View Section (Hidden until selected) -->
+        <!-- Proxy View Section -->
         <div id="proxy-section" class="portal-section" style="display: none;">
             <div class="section-header-bar">
-                <h2>Embedded Web Proxy</h2>
+                <h2>Proxy</h2>
                 <button class="back-pill-btn" onclick="showView('home')">
                     <span class="material-icons">arrow_back</span> Back
                 </button>
@@ -216,6 +216,16 @@
                         <option value="classroom">Google Classroom</option>
                         <option value="drive">Google Drive</option>
                     </select>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-text">
+                        <strong>Always Launch in about:blank</strong>
+                        <span>Auto-open in data frame on startup</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="auto-about-blank-toggle">
+                        <span class="slider round"></span>
+                    </label>
                 </div>
                 <div class="setting-item">
                     <div class="setting-text">
