@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Mandatory about:blank Launch Gateway Screen -->
+    <div id="mandatory-gate" class="gate-overlay">
+        <div class="gate-card">
+            <div class="gate-icon-badge">
+                <span class="material-icons">security</span>
+            </div>
+            <h2>Tab Cloak Required</h2>
+            <p>To access <strong>tcaw.</strong> safely and bypass network content filters, you must launch the portal inside an <code>about:blank</code> frame.</p>
+            
+            <div class="gate-warning-box">
+                <span class="material-icons warning-icon">warning</span>
+                <span><strong>Important:</strong> Please ensure pop-ups are allowed in your browser settings so the cloak opens properly.</span>
+            </div>
+
+            <button class="gate-launch-btn" onclick="openAboutBlank()">
+                <span class="material-icons">open_in_new</span>
+                Launch in about:blank
+            </button>
+        </div>
+    </div>
+
     <!-- 3-Second Full Page Educational Overlay (Scholastic Sphere) -->
     <div id="splash-screen" class="splash-screen">
         <header class="lh-navbar">
@@ -88,7 +109,7 @@
             </div>
         </section>
 
-        <!-- Option Cards Hub Grid -->
+        <!-- Option Cards Hub Grid (3 Cards - about:blank removed) -->
         <section class="options-grid">
             <div class="option-card" onclick="showView('flash-games')">
                 <div class="option-icon-wrapper">
@@ -110,23 +131,13 @@
                 </div>
             </div>
 
-            <div class="option-card" id="about-blank-card" onclick="handleAboutBlankClick()">
-                <div class="option-icon-wrapper">
-                    <span class="material-icons">open_in_new</span>
-                </div>
-                <div class="option-content">
-                    <h3 id="about-blank-title">Open in about:blank</h3>
-                    <p id="about-blank-desc">Cloak site inside a clean browser data frame.</p>
-                </div>
-            </div>
-
             <div class="option-card" onclick="showView('proxy')">
                 <div class="option-icon-wrapper">
                     <span class="material-icons">public</span>
                 </div>
                 <div class="option-content">
                     <h3>Proxy</h3>
-                    <p>Web proxy portal.</p>
+                    <p>Embedded web proxy portal.</p>
                 </div>
             </div>
         </section>
@@ -216,16 +227,6 @@
                         <option value="classroom">Google Classroom</option>
                         <option value="drive">Google Drive</option>
                     </select>
-                </div>
-                <div class="setting-item">
-                    <div class="setting-text">
-                        <strong>Always Launch in about:blank</strong>
-                        <span>Auto-open in data frame on startup</span>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="auto-about-blank-toggle">
-                        <span class="slider round"></span>
-                    </label>
                 </div>
                 <div class="setting-item">
                     <div class="setting-text">
