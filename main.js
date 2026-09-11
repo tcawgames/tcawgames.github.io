@@ -14,7 +14,6 @@ const typewriterPhrases = [
     "HTML5 canvas, flash ruffle & multi-repo integration."
 ];
 
-// Local meme image assets for about:blank Easter egg
 const memeImages = [
     "images/sog1.jpg",
     "images/sog2.png",
@@ -33,14 +32,17 @@ let lastSoundTime = 0;
 
 document.addEventListener('DOMContentLoaded', async () => {
     loadSettings();
-    checkGateStatus();
 
-    // 3-second splash screen fade out
+    // STEP 1: Run 3-second Educational Splash Screen FIRST
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         if (splash) {
             splash.classList.add('hidden');
-            setTimeout(() => splash.remove(), 600);
+            setTimeout(() => {
+                splash.remove();
+                // STEP 2: Trigger about:blank Gate Check AFTER splash is removed
+                checkGateStatus();
+            }, 600);
         }
     }, 3000);
 
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
 });
 
-// Detection for about:blank & Mandatory Gate Control
+// Detection for about:blank & Frame Context
 function isInAboutBlank() {
     try {
         return (
@@ -67,15 +69,15 @@ function checkGateStatus() {
     const gate = document.getElementById('mandatory-gate');
     if (gate) {
         if (isInAboutBlank()) {
-            gate.style.display = 'none'; // Bypasses gate if already inside about:blank
-            injectEasterEggButton(); // Displays secret meme button in navbar
+            gate.style.display = 'none';
+            injectEasterEggButton();
         } else {
-            gate.style.display = 'flex'; // Blocks site content until launched
+            gate.style.display = 'flex';
         }
     }
 }
 
-// Injects secret sog. easter egg button next to logo when inside about:blank
+// Easter Egg setup when running inside about:blank
 function injectEasterEggButton() {
     const navBrand = document.querySelector('.nav-brand');
     if (navBrand && !document.getElementById('easter-egg-btn')) {
@@ -112,7 +114,6 @@ function spawnFallingMeme() {
     img.src = randomImg;
     img.className = 'falling-meme';
 
-    // Explicit inline styling for maximum visibility over all UI layers
     img.style.position = 'fixed';
     img.style.top = '-150px';
     img.style.zIndex = '9999999';
@@ -137,7 +138,6 @@ function spawnFallingMeme() {
 
 function playRandomSound() {
     const now = Date.now();
-    // 0.5s audio cooldown restriction
     if (now - lastSoundTime >= 500) {
         lastSoundTime = now;
         const randomSound = memeSounds[Math.floor(Math.random() * memeSounds.length)];
@@ -146,7 +146,7 @@ function playRandomSound() {
     }
 }
 
-// Open about:blank & Close Current Tab
+// Always launches as about:blank & closes parent tab
 function openAboutBlank() {
     const win = window.open('about:blank', '_blank');
     if (win) {
@@ -164,7 +164,6 @@ function openAboutBlank() {
             </html>
         `);
 
-        // Close old tab (or redirect to Google Classroom as stealth fallback)
         setTimeout(() => {
             window.close();
             setTimeout(() => {
@@ -207,7 +206,6 @@ async function launchGame(id, game) {
         gameLink = gameLink.substring(2);
     }
 
-    // Flash SWF Ruffle Engine Integration
     if (gameLink.endsWith('.swf')) {
         iframe.style.display = 'none';
         
@@ -232,11 +230,9 @@ async function launchGame(id, game) {
         }
 
         try {
-            // Fetch game document directly via JavaScript
             const response = await fetch(gameLink);
             let htmlContent = await response.text();
 
-            // Inject base tag to resolve relative asset paths (CSS, JS, images)
             const baseUrl = new URL(gameLink, window.location.href).href;
             if (htmlContent.includes('<head>')) {
                 htmlContent = htmlContent.replace('<head>', `<head><base href="${baseUrl}">`);
@@ -244,7 +240,6 @@ async function launchGame(id, game) {
                 htmlContent = `<head><base href="${baseUrl}"></head>` + htmlContent;
             }
 
-            // Set iframe src to about:blank and write document memory
             iframe.src = "about:blank";
             const doc = iframe.contentWindow || iframe.contentDocument;
             const targetDoc = doc.document || doc;
