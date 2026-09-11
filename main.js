@@ -1,11 +1,11 @@
 let allGamesData = {};
 let currentCategory = 'all';
 
-// Default settings state set to Clever
 let settings = {
     glow: 50,
     panicKey: '`',
-    tabCloak: 'clever'
+    tabCloak: 'clever',
+    autoAboutBlank: false
 };
 
 const typewriterPhrases = [
@@ -15,8 +15,30 @@ const typewriterPhrases = [
     "HTML5 canvas, flash ruffle & multi-repo integration."
 ];
 
+const memeImages = [
+    "https://i.ibb.co/YBn9YZNZ/image.png",
+    "https://i.ibb.co/Wvv0vMNv/image.png",
+    "https://i.ibb.co/cXyMT7V4/images-q-tbn-ANd9-Gc-S4za-Cx-Z7-Zri-1-Sdfjh-Oxj-Sm-Yi-PLZwcdtg-5j-KKk-c-Fgy-HE-I06-YEydz-XF9-s-10.jpg"
+];
+
+const memeSounds = [
+    "icons/angry.mp3",
+    "icons/cool.mp3",
+    "icons/funny.mp3",
+    "icons/wow.mp3",
+    "icons/yay.mp3"
+];
+
+let lastSoundTime = 0;
+
 document.addEventListener('DOMContentLoaded', async () => {
     loadSettings();
+    checkAboutBlankStatus();
+
+    // Auto-launch about:blank if setting enabled and not already inside iframe/about:blank
+    if (settings.autoAboutBlank && window.location.protocol !== 'about:' && window.self === window.top) {
+        openAboutBlank();
+    }
 
     // 3-second splash screen fade out
     setTimeout(() => {
@@ -32,13 +54,71 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
 });
 
-// View Routing Switcher (No URL changes)
+// Detect if page is running inside about:blank
+function isInAboutBlank() {
+    try {
+        return window.location.protocol === 'about:' || window.top.location.protocol === 'about:';
+    } catch (e) {
+        return true; // Cross-origin top window context inside about:blank
+    }
+}
+
+function checkAboutBlankStatus() {
+    if (isInAboutBlank()) {
+        const card = document.getElementById('about-blank-card');
+        const title = document.getElementById('about-blank-title');
+        const desc = document.getElementById('about-blank-desc');
+
+        if (card && title && desc) {
+            card.classList.add('in-about-blank');
+            title.textContent = "you are already in about blank so theres honestly no point in clicking this! ";
+            desc.textContent = "Click at your own risk...";
+        }
+    }
+}
+
+function handleAboutBlankClick() {
+    if (isInAboutBlank()) {
+        // Trigger Meme Easter Egg
+        spawnFallingMeme();
+        playRandomSound();
+    } else {
+        openAboutBlank();
+    }
+}
+
+function spawnFallingMeme() {
+    const img = document.createElement('img');
+    const randomImg = memeImages[Math.floor(Math.random() * memeImages.length)];
+    img.src = randomImg;
+    img.className = 'falling-meme';
+
+    // Randomize horizontal start position
+    const randomX = Math.random() * (window.innerWidth - 120);
+    img.style.left = `${randomX}px`;
+
+    document.body.appendChild(img);
+
+    // Clean up DOM after animation completes
+    setTimeout(() => img.remove(), 3600);
+}
+
+function playRandomSound() {
+    const now = Date.now();
+    // 0.5s audio cooldown restriction
+    if (now - lastSoundTime >= 500) {
+        lastSoundTime = now;
+        const randomSound = memeSounds[Math.floor(Math.random() * memeSounds.length)];
+        const audio = new Audio(randomSound);
+        audio.play().catch(e => console.log('Audio playback prevented or missing file:', e));
+    }
+}
+
 function showView(viewName) {
     const flashSec = document.getElementById('flash-games-section');
     const retroSec = document.getElementById('retro-console-section');
     const proxySec = document.getElementById('proxy-section');
 
-    // Reset visibility
     flashSec.style.display = 'none';
     retroSec.style.display = 'none';
     proxySec.style.display = 'none';
@@ -52,7 +132,6 @@ function showView(viewName) {
     }
 }
 
-// Open site in about:blank tab cloak
 function openAboutBlank() {
     const win = window.open('about:blank', '_blank');
     if (win) {
@@ -72,7 +151,6 @@ function openAboutBlank() {
     }
 }
 
-// Single-Page Game Launcher
 function launchGame(id, game) {
     const playerView = document.getElementById('player-view');
     const titleDisplay = document.getElementById('game-title-display');
@@ -87,7 +165,6 @@ function launchGame(id, game) {
         gameLink = gameLink.substring(2);
     }
 
-    // Flash SWF Ruffle Engine Integration
     if (gameLink.endsWith('.swf')) {
         iframe.style.display = 'none';
         
@@ -129,7 +206,6 @@ function toggleFullscreen() {
     else if (document.exitFullscreen) document.exitFullscreen();
 }
 
-// Backspace Typewriter Animation Engine
 function startTypewriter() {
     const target = document.getElementById('typewriter-text');
     if (!target) return;
@@ -177,6 +253,7 @@ function loadSettings() {
 
     document.getElementById('panic-key-btn').textContent = `Key: ${settings.panicKey}`;
     document.getElementById('tab-cloak').value = settings.tabCloak;
+    document.getElementById('auto-about-blank-toggle').checked = settings.autoAboutBlank || false;
     applyTabCloak(settings.tabCloak);
 }
 
@@ -332,6 +409,11 @@ function setupEventListeners() {
     document.getElementById('tab-cloak').addEventListener('change', (e) => {
         settings.tabCloak = e.target.value;
         applyTabCloak(settings.tabCloak);
+        saveSettings();
+    });
+
+    document.getElementById('auto-about-blank-toggle').addEventListener('change', (e) => {
+        settings.autoAboutBlank = e.target.checked;
         saveSettings();
     });
 
