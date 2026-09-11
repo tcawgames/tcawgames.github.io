@@ -15,10 +15,11 @@ const typewriterPhrases = [
     "HTML5 canvas, flash ruffle & multi-repo integration."
 ];
 
+// Local meme image assets
 const memeImages = [
-    "https://i.ibb.co/YBn9YZNZ/image.png",
-    "https://i.ibb.co/Wvv0vMNv/image.png",
-    "https://i.ibb.co/cXyMT7V4/images-q-tbn-ANd9-Gc-S4za-Cx-Z7-Zri-1-Sdfjh-Oxj-Sm-Yi-PLZwcdtg-5j-KKk-c-Fgy-HE-I06-YEydz-XF9-s-10.jpg"
+    "images/sog1.jpg",
+    "images/sog2.png",
+    "images/sog3.png"
 ];
 
 const memeSounds = [
@@ -54,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
 });
 
-// Robust Detection for about:blank & Embedded Framing
+// Detection for about:blank & Embedded Framing
 function isInAboutBlank() {
     try {
         return (
@@ -64,7 +65,6 @@ function isInAboutBlank() {
             window.self !== window.top
         );
     } catch (e) {
-        // Cross-origin restriction triggered when embedded inside about:blank iframe
         return true; 
     }
 }
@@ -85,7 +85,6 @@ function checkAboutBlankStatus() {
 
 function handleAboutBlankClick() {
     if (isInAboutBlank()) {
-        // Trigger Meme Easter Egg
         spawnFallingMeme();
         playRandomSound();
     } else {
@@ -99,14 +98,29 @@ function spawnFallingMeme() {
     img.src = randomImg;
     img.className = 'falling-meme';
 
+    // Explicit inline styling to guarantee high visibility
+    img.style.position = 'fixed';
+    img.style.top = '-150px';
+    img.style.zIndex = '9999999';
+    img.style.pointerEvents = 'none';
+    img.style.width = '120px';
+    img.style.height = '120px';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = '12px';
+    img.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.6)';
+
     // Randomize horizontal start position across screen
-    const randomX = Math.random() * (window.innerWidth - 120);
+    const randomX = Math.random() * (window.innerWidth - 140);
     img.style.left = `${randomX}px`;
 
     document.body.appendChild(img);
 
-    // Clean up DOM after animation completes
-    setTimeout(() => img.remove(), 3600);
+    // Clean up element after animation completes
+    setTimeout(() => {
+        if (img && img.parentNode) {
+            img.remove();
+        }
+    }, 3600);
 }
 
 function playRandomSound() {
@@ -116,7 +130,7 @@ function playRandomSound() {
         lastSoundTime = now;
         const randomSound = memeSounds[Math.floor(Math.random() * memeSounds.length)];
         const audio = new Audio(randomSound);
-        audio.play().catch(e => console.log('Audio playback blocked or file missing:', e));
+        audio.play().catch(e => console.log('Audio playback prevented or missing file:', e));
     }
 }
 
@@ -138,7 +152,7 @@ function openAboutBlank() {
             </html>
         `);
 
-        // Close old tab (or redirect to Google Classroom if browser blocks closing)
+        // Close old tab (or redirect to Google Classroom as stealth fallback)
         setTimeout(() => {
             window.close();
             setTimeout(() => {
