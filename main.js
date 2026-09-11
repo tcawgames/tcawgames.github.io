@@ -4,8 +4,7 @@ let currentCategory = 'all';
 let settings = {
     glow: 50,
     panicKey: '`',
-    tabCloak: 'clever',
-    autoAboutBlank: false
+    tabCloak: 'clever'
 };
 
 const typewriterPhrases = [
@@ -34,12 +33,7 @@ let lastSoundTime = 0;
 
 document.addEventListener('DOMContentLoaded', async () => {
     loadSettings();
-    checkAboutBlankStatus();
-
-    // Auto-launch about:blank if setting enabled and not already inside iframe/about:blank
-    if (settings.autoAboutBlank && !isInAboutBlank()) {
-        openAboutBlank();
-    }
+    checkGateStatus();
 
     // 3-second splash screen fade out
     setTimeout(() => {
@@ -55,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
 });
 
-// Robust Detection for about:blank & Embedded Framing
+// Detection for about:blank & Mandatory Gate Control
 function isInAboutBlank() {
     try {
         return (
@@ -69,26 +63,46 @@ function isInAboutBlank() {
     }
 }
 
-function checkAboutBlankStatus() {
-    if (isInAboutBlank()) {
-        const card = document.getElementById('about-blank-card');
-        const title = document.getElementById('about-blank-title');
-        const desc = document.getElementById('about-blank-desc');
-
-        if (card && title && desc) {
-            card.classList.add('in-about-blank');
-            title.textContent = "you are already in about blank so theres honestly no point in clicking this!";
-            desc.textContent = "Click at your own risk...";
+function checkGateStatus() {
+    const gate = document.getElementById('mandatory-gate');
+    if (gate) {
+        if (isInAboutBlank()) {
+            gate.style.display = 'none'; // Bypasses gate if already inside about:blank
+            injectEasterEggButton(); // Displays secret meme button in navbar
+        } else {
+            gate.style.display = 'flex'; // Blocks site content until launched
         }
     }
 }
 
-function handleAboutBlankClick() {
-    if (isInAboutBlank()) {
-        spawnFallingMeme();
-        playRandomSound();
-    } else {
-        openAboutBlank();
+// Injects secret sog. easter egg button next to logo when inside about:blank
+function injectEasterEggButton() {
+    const navBrand = document.querySelector('.nav-brand');
+    if (navBrand && !document.getElementById('easter-egg-btn')) {
+        const btn = document.createElement('button');
+        btn.id = 'easter-egg-btn';
+        btn.textContent = 'sog.';
+        btn.style.cssText = `
+            background: rgba(255, 51, 102, 0.15);
+            border: 1px solid #ff3366;
+            color: #ff3366;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: all 0.2s;
+            box-shadow: 0 0 8px rgba(255, 51, 102, 0.3);
+        `;
+        
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            spawnFallingMeme();
+            playRandomSound();
+        });
+
+        navBrand.appendChild(btn);
     }
 }
 
@@ -98,7 +112,7 @@ function spawnFallingMeme() {
     img.src = randomImg;
     img.className = 'falling-meme';
 
-    // Inline styling to guarantee highest visibility layer above all UI
+    // Explicit inline styling for maximum visibility over all UI layers
     img.style.position = 'fixed';
     img.style.top = '-150px';
     img.style.zIndex = '9999999';
@@ -308,7 +322,6 @@ function loadSettings() {
 
     document.getElementById('panic-key-btn').textContent = `Key: ${settings.panicKey}`;
     document.getElementById('tab-cloak').value = settings.tabCloak;
-    document.getElementById('auto-about-blank-toggle').checked = settings.autoAboutBlank || false;
     applyTabCloak(settings.tabCloak);
 }
 
@@ -464,11 +477,6 @@ function setupEventListeners() {
     document.getElementById('tab-cloak').addEventListener('change', (e) => {
         settings.tabCloak = e.target.value;
         applyTabCloak(settings.tabCloak);
-        saveSettings();
-    });
-
-    document.getElementById('auto-about-blank-toggle').addEventListener('change', (e) => {
-        settings.autoAboutBlank = e.target.checked;
         saveSettings();
     });
 
