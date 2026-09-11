@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 3-Second Premium Educational Overlay (Scholastic Sphere) -->
+    <!-- 3-Second Full Page Educational Overlay (Scholastic Sphere) -->
     <div id="splash-screen" class="splash-screen">
         <header class="lh-navbar">
             <div class="lh-brand">
@@ -62,41 +62,140 @@
 
     <!-- Main Portal Navbar -->
     <header class="navbar">
-        <a href="index.html" class="nav-brand">
+        <a href="#" onclick="showView('home'); return false;" class="nav-brand">
             <img src="icons/logo.png" alt="Logo" class="nav-logo" onerror="this.style.display='none'">
-            <span>tcaw</span>
+            <span>tcaw.</span>
         </a>
-        <div class="nav-search">
+        <div class="nav-search" id="nav-search-bar">
             <span class="material-icons">search</span>
-            <input type="text" id="search-input" placeholder="Search equations...">
+            <input type="text" id="search-input" placeholder="Search catalog...">
         </div>
         <button class="settings-btn" id="open-settings">
             <span class="material-icons">settings</span>
         </button>
     </header>
 
-    <!-- Main Container -->
-    <main class="main-container">
-        <!-- Hero Header with Dynamic Typewriter Animation -->
+    <!-- Main Container View -->
+    <main class="main-container" id="home-view">
+        <!-- Hero Header with Logo + Dynamic Typewriter Animation -->
         <section class="typewriter-hero">
-            <h1 class="portal-heading">tcaw</h1>
+            <div class="hero-brand-group">
+                <img src="icons/logo.png" alt="Logo" class="hero-logo" onerror="this.style.display='none'">
+                <h1 class="portal-heading">tcaw.</h1>
+            </div>
             <div class="typewriter-container">
                 <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
             </div>
         </section>
 
-        <!-- Category Tabs Bar -->
-        <nav class="tabs-bar" id="tabs-bar">
-            <button class="tab-btn active" data-category="all">All</button>
-            <button class="tab-btn" data-category="popular">Popular</button>
-            <button class="tab-btn" data-category="recommended">Recommended</button>
-        </nav>
+        <!-- Option Cards Hub Grid -->
+        <section class="options-grid">
+            <div class="option-card" onclick="showView('flash-games')">
+                <div class="option-icon-wrapper">
+                    <span class="material-icons">sports_esports</span>
+                </div>
+                <div class="option-content">
+                    <h3>Flash Games</h3>
+                    <p>Browse HTML5 and Flash native game catalog.</p>
+                </div>
+            </div>
 
-        <!-- Dynamic Game Grid -->
-        <section class="game-grid" id="game-grid">
-            <!-- Populated dynamically via main.js -->
+            <div class="option-card" onclick="showView('retro-console')">
+                <div class="option-icon-wrapper">
+                    <span class="material-icons">videogame_asset</span>
+                </div>
+                <div class="option-content">
+                    <h3>Retro Console</h3>
+                    <p>Classic console emulation and ROM library.</p>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="openAboutBlank()">
+                <div class="option-icon-wrapper">
+                    <span class="material-icons">open_in_new</span>
+                </div>
+                <div class="option-content">
+                    <h3>Open in about:blank</h3>
+                    <p>Cloak site inside a clean browser data frame.</p>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="showView('proxy')">
+                <div class="option-icon-wrapper">
+                    <span class="material-icons">public</span>
+                </div>
+                <div class="option-content">
+                    <h3>Proxy</h3>
+                    <p>Embedded web proxy portal.</p>
+                </div>
+            </div>
         </section>
+
+        <!-- Flash Games Section (Hidden until selected) -->
+        <div id="flash-games-section" class="portal-section" style="display: none;">
+            <div class="section-header-bar">
+                <h2>Flash & HTML5 Catalog</h2>
+                <button class="back-pill-btn" onclick="showView('home')">
+                    <span class="material-icons">arrow_back</span> Back
+                </button>
+            </div>
+            
+            <nav class="tabs-bar" id="tabs-bar">
+                <button class="tab-btn active" data-category="all">All</button>
+                <button class="tab-btn" data-category="popular">Popular</button>
+                <button class="tab-btn" data-category="recommended">Recommended</button>
+            </nav>
+
+            <section class="game-grid" id="game-grid">
+                <!-- Populated dynamically via main.js -->
+            </section>
+        </div>
+
+        <!-- Retro Console Section (Hidden until selected) -->
+        <div id="retro-console-section" class="portal-section" style="display: none;">
+            <div class="section-header-bar">
+                <h2>Retro Console Vault</h2>
+                <button class="back-pill-btn" onclick="showView('home')">
+                    <span class="material-icons">arrow_back</span> Back
+                </button>
+            </div>
+            <div class="placeholder-card">
+                <span class="material-icons large-icon">videogame_asset</span>
+                <h3>Retro Console System</h3>
+                <p>Emulators and custom ROM slots ready for game additions.</p>
+            </div>
+        </div>
+
+        <!-- Proxy View Section (Hidden until selected) -->
+        <div id="proxy-section" class="portal-section" style="display: none;">
+            <div class="section-header-bar">
+                <h2>Embedded Web Proxy</h2>
+                <button class="back-pill-btn" onclick="showView('home')">
+                    <span class="material-icons">arrow_back</span> Back
+                </button>
+            </div>
+            <div class="proxy-frame-container">
+                <iframe src="https://ilovegdcolonge.decharacter.com/" title="Proxy Frame" id="proxy-iframe"></iframe>
+            </div>
+        </div>
     </main>
+
+    <!-- Integrated Single-Page Game Player Screen -->
+    <div class="player-shell" id="player-view" style="display: none;">
+        <div class="game-hud" id="game-hud">
+            <button class="hud-btn" onclick="closePlayer()" title="Return to Portal">
+                <span class="material-icons" style="font-size: 18px;">arrow_back</span>
+            </button>
+            <span class="hud-title" id="game-title-display">Loading Game...</span>
+            <button class="hud-btn" onclick="toggleFullscreen()" title="Fullscreen">
+                <span class="material-icons" style="font-size: 18px;">fullscreen</span>
+            </button>
+        </div>
+
+        <div class="frame-container" id="player-frame-container">
+            <iframe id="gameiframe" src="" allowfullscreen title="Game Frame"></iframe>
+        </div>
+    </div>
 
     <!-- Settings Modal -->
     <div class="modal-overlay" id="settings-modal">
@@ -113,7 +212,7 @@
                     </div>
                     <select id="tab-cloak" class="setting-select">
                         <option value="clever">Clever Portal</option>
-                        <option value="default">tcaw</option>
+                        <option value="default">tcaw.</option>
                         <option value="classroom">Google Classroom</option>
                         <option value="drive">Google Drive</option>
                     </select>
