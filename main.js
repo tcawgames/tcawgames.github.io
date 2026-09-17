@@ -53,7 +53,7 @@ function isInAboutBlank() {
     }
 }
 
-// Master execution flow: Prevents bleed-through outside about:blank
+// Master execution flow: Handles auto-launch if pop-ups allowed & prevents site bleed-through
 function handleTabRouting() {
     const splash = document.getElementById('splash-screen');
     const portalApp = document.getElementById('portal-app-wrapper');
@@ -61,7 +61,7 @@ function handleTabRouting() {
     const launchGroup = document.getElementById('edu-launch-box-group');
 
     if (isInAboutBlank()) {
-        // INSIDE ABOUT:BLANK -> Run 3-second splash, then show full portal
+        // INSIDE ABOUT:BLANK -> Run 3-second splash, then reveal full dark portal
         if (searchGroup) searchGroup.style.display = 'block';
         if (launchGroup) launchGroup.style.display = 'none';
 
@@ -76,12 +76,70 @@ function handleTabRouting() {
             }
         }, 3000);
     } else {
-        // NORMAL TAB -> Hide portal completely (NO BLEED-THROUGH), show launch block inside splash screen
+        // NORMAL TAB -> Hide portal completely (NO BLEED-THROUGH)
         if (portalApp) portalApp.style.display = 'none';
         if (searchGroup) searchGroup.style.display = 'none';
-        if (launchGroup) launchGroup.style.display = 'block';
         if (splash) splash.style.opacity = '1';
+
+        // Attempt automated launch into about:blank if pop-ups are allowed
+        const autoLaunched = attemptAutoAboutBlank();
+
+        // Fallback: If pop-ups are blocked, display the discreet button inside educational splash
+        if (!autoLaunched && launchGroup) {
+            launchGroup.style.display = 'block';
+        }
     }
+}
+
+// Attempts to open about:blank automatically on page load
+function attemptAutoAboutBlank() {
+    try {
+        const win = window.open('about:blank', '_blank');
+        if (win && !win.closed && typeof win.closed !== 'undefined') {
+            writeAboutBlankContent(win);
+            closeOrRedirectCurrentTab();
+            return true;
+        }
+    } catch (e) {
+        console.log("Auto pop-up launch prevented by browser policy.");
+    }
+    return false;
+}
+
+// Launches about:blank tab manually (used on fallback click)
+function openAboutBlank() {
+    const win = window.open('about:blank', '_blank');
+    if (win) {
+        writeAboutBlankContent(win);
+        closeOrRedirectCurrentTab();
+    }
+}
+
+// Writes current page content into about:blank frame stream
+function writeAboutBlankContent(win) {
+    win.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Clever | Portal</title>
+            <link rel="icon" href="https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png">
+            <style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#050a06;}</style>
+        </head>
+        <body>
+            <iframe src="${window.location.href}" style="width:100%;height:100%;border:none;"></iframe>
+        </body>
+        </html>
+    `);
+}
+
+// Smoothly closes original tab or routes to Google Classroom as backup
+function closeOrRedirectCurrentTab() {
+    setTimeout(() => {
+        window.close();
+        setTimeout(() => {
+            window.location.href = "https://classroom.google.com";
+        }, 100);
+    }, 100);
 }
 
 function injectEasterEggButton() {
@@ -149,33 +207,6 @@ function playRandomSound() {
         const randomSound = memeSounds[Math.floor(Math.random() * memeSounds.length)];
         const audio = new Audio(randomSound);
         audio.play().catch(e => console.log('Audio playback prevented or missing file:', e));
-    }
-}
-
-// Launches about:blank tab & closes original parent tab
-function openAboutBlank() {
-    const win = window.open('about:blank', '_blank');
-    if (win) {
-        win.document.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Clever | Portal</title>
-                <link rel="icon" href="https://support.highlandschools.org/wp-content/uploads/2020/11/clever1.png">
-                <style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#050a06;}</style>
-            </head>
-            <body>
-                <iframe src="${window.location.href}" style="width:100%;height:100%;border:none;"></iframe>
-            </body>
-            </html>
-        `);
-
-        setTimeout(() => {
-            window.close();
-            setTimeout(() => {
-                window.location.href = "https://classroom.google.com";
-            }, 100);
-        }, 100);
     }
 }
 
