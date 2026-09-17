@@ -201,6 +201,12 @@ async function launchGame(id, game) {
     titleDisplay.textContent = game.name.toUpperCase();
     playerView.style.display = 'flex';
 
+    // Reset HUD state to visible upon launching any game
+    const hud = document.getElementById('game-hud');
+    const restoreBtn = document.getElementById('hud-restore-btn');
+    if (hud) hud.classList.remove('minimized');
+    if (restoreBtn) restoreBtn.style.display = 'none';
+
     let gameLink = game.link;
     if (gameLink.startsWith('../')) {
         gameLink = gameLink.substring(2);
@@ -255,10 +261,29 @@ async function launchGame(id, game) {
     }
 }
 
+// Toggle Game HUD Minimization State
+function toggleHudMinimize() {
+    const hud = document.getElementById('game-hud');
+    const restoreBtn = document.getElementById('hud-restore-btn');
+
+    if (hud.classList.contains('minimized')) {
+        hud.classList.remove('minimized');
+        restoreBtn.style.display = 'none';
+    } else {
+        hud.classList.add('minimized');
+        restoreBtn.style.display = 'flex';
+    }
+}
+
 function closePlayer() {
     const playerView = document.getElementById('player-view');
     const iframe = document.getElementById('gameiframe');
     const ruffleInstance = document.getElementById('ruffle-player-instance');
+    const hud = document.getElementById('game-hud');
+    const restoreBtn = document.getElementById('hud-restore-btn');
+
+    if (hud) hud.classList.remove('minimized');
+    if (restoreBtn) restoreBtn.style.display = 'none';
 
     if (ruffleInstance) ruffleInstance.remove();
     iframe.src = 'about:blank';
@@ -372,7 +397,7 @@ function buildCategories() {
 
     const tabsBar = document.getElementById('tabs-bar');
     categoriesSet.forEach(cat => {
-        if (['casual', 'popular', 'recommended', 'all'].includes(cat.toLowerCase())) return;
+        if (['casual', 'popular', 'recommended', 'all', 'retro', 'platformer'].includes(cat.toLowerCase())) return;
 
         const btn = document.createElement('button');
         btn.className = 'tab-btn';
@@ -392,12 +417,20 @@ function generateDynamicCover(name) {
     return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
 
+// Separates games by type into Flash/HTML5 vs Retro Vault sections
 function renderGames(gamesObj, searchQuery = '') {
-    const grid = document.getElementById('game-grid');
-    grid.innerHTML = '';
+    const mainGrid = document.getElementById('game-grid');
+    const retroGrid = document.getElementById('retro-game-grid');
+    
+    mainGrid.innerHTML = '';
+    if (retroGrid) retroGrid.innerHTML = '';
+
     const query = searchQuery.toLowerCase().trim();
 
-    const filteredEntries = Object.entries(gamesObj).filter(([id, game]) => {
+    let standardCount = 0;
+    let retroCount = 0;
+
+    Object.entries(gamesObj).forEach(([id, game], index) => {
         const matchesQuery = game.name.toLowerCase().includes(query);
         let matchesCat = false;
 
@@ -406,15 +439,8 @@ function renderGames(gamesObj, searchQuery = '') {
         else if (currentCategory === 'recommended' && game.recommended) matchesCat = true;
         else if (game.catagory && game.catagory.toLowerCase().includes(currentCategory)) matchesCat = true;
 
-        return matchesQuery && matchesCat;
-    });
+        if (!matchesQuery || !matchesCat) return;
 
-    if (filteredEntries.length === 0) {
-        grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">No games match this category or search.</p>';
-        return;
-    }
-
-    filteredEntries.forEach(([id, game], index) => {
         const card = document.createElement('div');
         card.className = 'game-card';
         card.style.animationDelay = `${index * 0.02}s`;
@@ -440,8 +466,24 @@ function renderGames(gamesObj, searchQuery = '') {
         `;
 
         card.addEventListener('click', () => launchGame(id, game));
-        grid.appendChild(card);
+
+        // Direct retro games to the Retro Console section grid
+        if (game.type === 'retro' && retroGrid) {
+            retroGrid.appendChild(card);
+            retroCount++;
+        } else {
+            mainGrid.appendChild(card);
+            standardCount++;
+        }
     });
+
+    if (standardCount === 0) {
+        mainGrid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">No games match this category or search.</p>';
+    }
+
+    if (retroCount === 0 && retroGrid) {
+        retroGrid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">No retro console games found.</p>';
+    }
 }
 
 function setupEventListeners() {
