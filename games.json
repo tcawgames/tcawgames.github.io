@@ -833,7 +833,7 @@
         "gradient": "grey",
         "catagory": "casual",
         "link": "../cloud2/Repo4/super-smash-flash-2.swf",
-        "type": "flash",    
+        "type": "flash",  
         "status": "broken",
         "statusMessage": "",
         "statusUpdated": "2026-04-12"
@@ -860,7 +860,7 @@
         "gradient": "grey",
         "catagory": "casual",
         "link": "./FNFF/index.html",
-        "type": "html",    
+        "type": "html",  
         "isexternal": "true"
     },
     "five nights at epsteins": {
@@ -878,5 +878,23 @@
         "catagory": "casual driver",
         "link": "../cloud2/rally-racer-dirt/",
         "type": "html"
+    },
+    "sonic the hedgehog": {
+        "cover": "sonic1.png",
+        "name": "Sonic the Hedgehog",
+        "gradient": "blue",
+        "catagory": "retro platformer",
+        "link": "english/sonic1/",
+        "type": "retro",
+        "popular": true
+    },
+    "super mario world": {
+        "cover": "smw.png",
+        "name": "Super Mario World",
+        "gradient": "yellow",
+        "catagory": "retro platformer",
+        "link": "english/smw/",
+        "type": "retro",
+        "recommended": true
     }
 }
