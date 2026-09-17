@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- STEP 1: 3-Second Educational Overlay (Scholastic Sphere) -->
+    <!-- Educational Splash & Gateway Screen (Prevents site bleed-through) -->
     <div id="splash-screen" class="splash-screen">
         <header class="lh-navbar">
             <div class="lh-brand">
@@ -38,18 +38,34 @@
             <p class="lh-subtext">Access structured, expert-verified course materials across algebra, geometry, physical sciences, world history, and foundational computing concepts.</p>
             
             <div class="lh-search-card">
-                <div class="lh-search-header">
-                    <label class="lh-search-label">Explore the curriculum database</label>
-                    <span class="lh-status-tag">v4.2 Live Catalog</span>
+                <!-- Normal Search Box (Visible inside about:blank) -->
+                <div id="edu-search-box-group">
+                    <div class="lh-search-header">
+                        <label class="lh-search-label">Explore the curriculum database</label>
+                        <span class="lh-status-tag">v4.2 Live Catalog</span>
+                    </div>
+                    <div class="lh-search-box">
+                        <span class="material-icons lh-search-icon">search</span>
+                        <input type="text" placeholder="Search topics, formulas, or module IDs..." disabled>
+                        <button class="lh-submit-btn">
+                            Search modules
+                            <span class="material-icons arrow-icon">arrow_forward</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="lh-search-box">
-                    <span class="material-icons lh-search-icon">search</span>
-                    <input type="text" placeholder="Search topics, formulas, or module IDs..." disabled>
-                    <button class="lh-submit-btn">
-                        Search modules
-                        <span class="material-icons arrow-icon">arrow_forward</span>
+
+                <!-- Mandatory Launch Group (Visible on normal tab) -->
+                <div id="edu-launch-box-group" style="display: none;">
+                    <div class="lh-notice-box">
+                        <span class="material-icons notice-icon">info</span>
+                        <span>Click allow pop-ups to launch lessons in a new tab efficiently.</span>
+                    </div>
+                    <button class="lh-launch-btn" onclick="openAboutBlank()">
+                        Launch Learning Module
+                        <span class="material-icons arrow-icon">open_in_new</span>
                     </button>
                 </div>
+
                 <div class="lh-chip-row">
                     <span class="chip-label">Quick topics:</span>
                     <span class="topic-chip">Linear Equations</span>
@@ -60,135 +76,110 @@
         </main>
     </div>
 
-    <!-- STEP 2: Mandatory about:blank Launch Gateway Screen -->
-    <div id="mandatory-gate" class="gate-overlay" style="display: none;">
-        <div class="gate-card">
-            <div class="gate-icon-badge">
-                <span class="material-icons">security</span>
+    <!-- Main Portal Wrapper (Hidden completely until inside about:blank) -->
+    <div id="portal-app-wrapper" style="display: none;">
+        <header class="navbar">
+            <a href="#" onclick="showView('home'); return false;" class="nav-brand">
+                <img src="icons/logo.png" alt="Logo" class="nav-logo" onerror="this.style.display='none'">
+                <span>tcaw.</span>
+            </a>
+            <div class="nav-search" id="nav-search-bar">
+                <span class="material-icons">search</span>
+                <input type="text" id="search-input" placeholder="Search catalog...">
             </div>
-            <h2>Tab Cloak Required</h2>
-            <p>To access <strong>tcaw.</strong> safely and bypass network content filters, launch the portal inside an <code>about:blank</code> frame.</p>
-            
-            <div class="gate-warning-box">
-                <span class="material-icons warning-icon">warning</span>
-                <span><strong>Important:</strong> Please ensure pop-ups are allowed in your browser settings so the cloak opens properly.</span>
+            <button class="settings-btn" id="open-settings">
+                <span class="material-icons">settings</span>
+            </button>
+        </header>
+
+        <main class="main-container" id="home-view">
+            <section class="typewriter-hero">
+                <div class="hero-brand-group">
+                    <img src="icons/logo.png" alt="Logo" class="hero-logo" onerror="this.style.display='none'">
+                    <h1 class="portal-heading">tcaw.</h1>
+                </div>
+                <div class="typewriter-container">
+                    <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+                </div>
+            </section>
+
+            <section class="options-grid">
+                <div class="option-card" onclick="showView('flash-games')">
+                    <div class="option-icon-wrapper">
+                        <span class="material-icons">sports_esports</span>
+                    </div>
+                    <div class="option-content">
+                        <h3>Flash Games</h3>
+                        <p>Browse HTML5 and Flash native game catalog.</p>
+                    </div>
+                </div>
+
+                <div class="option-card" onclick="showView('retro-console')">
+                    <div class="option-icon-wrapper">
+                        <span class="material-icons">videogame_asset</span>
+                    </div>
+                    <div class="option-content">
+                        <h3>Retro Console</h3>
+                        <p>Classic console emulation and ROM library.</p>
+                    </div>
+                </div>
+
+                <div class="option-card" onclick="showView('proxy')">
+                    <div class="option-icon-wrapper">
+                        <span class="material-icons">public</span>
+                    </div>
+                    <div class="option-content">
+                        <h3>Proxy</h3>
+                        <p>Embedded web proxy portal.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flash Games Section -->
+            <div id="flash-games-section" class="portal-section" style="display: none;">
+                <div class="section-header-bar">
+                    <h2>Flash & HTML5 Catalog</h2>
+                    <button class="back-pill-btn" onclick="showView('home')">
+                        <span class="material-icons">arrow_back</span> Back
+                    </button>
+                </div>
+                
+                <nav class="tabs-bar" id="tabs-bar">
+                    <button class="tab-btn active" data-category="all">All</button>
+                    <button class="tab-btn" data-category="popular">Popular</button>
+                    <button class="tab-btn" data-category="recommended">Recommended</button>
+                </nav>
+
+                <section class="game-grid" id="game-grid"></section>
             </div>
 
-            <button class="gate-launch-btn" onclick="openAboutBlank()">
-                <span class="material-icons">open_in_new</span>
-                Launch in about:blank
-            </button>
-        </div>
+            <!-- Retro Console Section -->
+            <div id="retro-console-section" class="portal-section" style="display: none;">
+                <div class="section-header-bar">
+                    <h2>Retro Console Vault</h2>
+                    <button class="back-pill-btn" onclick="showView('home')">
+                        <span class="material-icons">arrow_back</span> Back
+                    </button>
+                </div>
+                <section class="game-grid" id="retro-game-grid"></section>
+            </div>
+
+            <!-- Proxy View Section -->
+            <div id="proxy-section" class="portal-section" style="display: none;">
+                <div class="section-header-bar">
+                    <h2>Proxy</h2>
+                    <button class="back-pill-btn" onclick="showView('home')">
+                        <span class="material-icons">arrow_back</span> Back
+                    </button>
+                </div>
+                <div class="proxy-frame-container">
+                    <iframe src="https://ilovegdcolonge.decharacter.com/" title="Proxy Frame" id="proxy-iframe"></iframe>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <!-- Main Portal Navbar -->
-    <header class="navbar">
-        <a href="#" onclick="showView('home'); return false;" class="nav-brand">
-            <img src="icons/logo.png" alt="Logo" class="nav-logo" onerror="this.style.display='none'">
-            <span>tcaw.</span>
-        </a>
-        <div class="nav-search" id="nav-search-bar">
-            <span class="material-icons">search</span>
-            <input type="text" id="search-input" placeholder="Search catalog...">
-        </div>
-        <button class="settings-btn" id="open-settings">
-            <span class="material-icons">settings</span>
-        </button>
-    </header>
-
-    <!-- Main Container View -->
-    <main class="main-container" id="home-view">
-        <section class="typewriter-hero">
-            <div class="hero-brand-group">
-                <img src="icons/logo.png" alt="Logo" class="hero-logo" onerror="this.style.display='none'">
-                <h1 class="portal-heading">tcaw.</h1>
-            </div>
-            <div class="typewriter-container">
-                <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
-            </div>
-        </section>
-
-        <!-- Option Cards Hub Grid -->
-        <section class="options-grid">
-            <div class="option-card" onclick="showView('flash-games')">
-                <div class="option-icon-wrapper">
-                    <span class="material-icons">sports_esports</span>
-                </div>
-                <div class="option-content">
-                    <h3>Flash Games</h3>
-                    <p>Browse HTML5 and Flash native game catalog.</p>
-                </div>
-            </div>
-
-            <div class="option-card" onclick="showView('retro-console')">
-                <div class="option-icon-wrapper">
-                    <span class="material-icons">videogame_asset</span>
-                </div>
-                <div class="option-content">
-                    <h3>Retro Console</h3>
-                    <p>Classic console emulation and ROM library.</p>
-                </div>
-            </div>
-
-            <div class="option-card" onclick="showView('proxy')">
-                <div class="option-icon-wrapper">
-                    <span class="material-icons">public</span>
-                </div>
-                <div class="option-content">
-                    <h3>Proxy</h3>
-                    <p>Embedded web proxy portal.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Flash Games Section -->
-        <div id="flash-games-section" class="portal-section" style="display: none;">
-            <div class="section-header-bar">
-                <h2>Flash & HTML5 Catalog</h2>
-                <button class="back-pill-btn" onclick="showView('home')">
-                    <span class="material-icons">arrow_back</span> Back
-                </button>
-            </div>
-            
-            <nav class="tabs-bar" id="tabs-bar">
-                <button class="tab-btn active" data-category="all">All</button>
-                <button class="tab-btn" data-category="popular">Popular</button>
-                <button class="tab-btn" data-category="recommended">Recommended</button>
-            </nav>
-
-            <section class="game-grid" id="game-grid">
-                <!-- Populated dynamically via main.js -->
-            </section>
-        </div>
-
-        <!-- Retro Console Section -->
-        <div id="retro-console-section" class="portal-section" style="display: none;">
-            <div class="section-header-bar">
-                <h2>Retro Console Vault</h2>
-                <button class="back-pill-btn" onclick="showView('home')">
-                    <span class="material-icons">arrow_back</span> Back
-                </button>
-            </div>
-            <section class="game-grid" id="retro-game-grid">
-                <!-- Retro games populated dynamically via main.js -->
-            </section>
-        </div>
-
-        <!-- Proxy View Section -->
-        <div id="proxy-section" class="portal-section" style="display: none;">
-            <div class="section-header-bar">
-                <h2>Proxy</h2>
-                <button class="back-pill-btn" onclick="showView('home')">
-                    <span class="material-icons">arrow_back</span> Back
-                </button>
-            </div>
-            <div class="proxy-frame-container">
-                <iframe src="https://ilovegdcolonge.decharacter.com/" title="Proxy Frame" id="proxy-iframe"></iframe>
-            </div>
-        </div>
-    </main>
-
-    <!-- Integrated Single-Page Game Player Screen -->
+    <!-- Player Screen -->
     <div class="player-shell" id="player-view" style="display: none;">
         <div class="game-hud" id="game-hud">
             <button class="hud-btn" onclick="closePlayer()" title="Return to Portal">
@@ -203,7 +194,6 @@
             </button>
         </div>
 
-        <!-- Floating Compact Toggle Pill when HUD is Minimized -->
         <button class="hud-restore-btn" id="hud-restore-btn" onclick="toggleHudMinimize()" title="Expand Top Bar" style="display: none;">
             <span class="material-icons" style="font-size: 20px;">expand_more</span>
         </button>
