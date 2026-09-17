@@ -279,27 +279,29 @@ body {
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
 }
 
+/* Hide / Minimized State for HUD */
 .game-hud.minimized {
-    transform: translate(-50%, -100px);
-    opacity: 0;
-    pointer-events: none;
+    transform: translate(-50%, -100px) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 .hud-title { font-size: 0.9rem; font-weight: 600; color: var(--text-color); }
 .hud-btn { background: transparent; border: 1px solid #102610; color: var(--text-color); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
 .hud-btn:hover { border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 8px var(--neon-glow); }
 
+/* Floating Restore Button */
 .hud-restore-btn {
     position: absolute;
     top: 8px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(11, 20, 11, 0.85);
+    background: rgba(11, 20, 11, 0.95);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-color);
     color: var(--neon-green);
-    width: 38px;
-    height: 28px;
+    width: 44px;
+    height: 30px;
     border-radius: 0 0 16px 16px;
     display: flex;
     align-items: center;
@@ -311,9 +313,9 @@ body {
 }
 
 .hud-restore-btn:hover {
-    background: rgba(0, 255, 102, 0.15);
+    background: rgba(0, 255, 102, 0.2);
     border-color: var(--neon-green);
-    height: 32px;
+    height: 34px;
 }
 
 .frame-container { flex: 1; width: 100%; height: 100%; border: none; background: #000; }
