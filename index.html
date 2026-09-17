@@ -60,7 +60,7 @@
         </main>
     </div>
 
-    <!-- STEP 2: Mandatory about:blank Launch Gateway Screen (Shows after educational overlay) -->
+    <!-- STEP 2: Mandatory about:blank Launch Gateway Screen -->
     <div id="mandatory-gate" class="gate-overlay" style="display: none;">
         <div class="gate-card">
             <div class="gate-icon-badge">
@@ -200,7 +200,15 @@
             <button class="hud-btn" onclick="toggleFullscreen()" title="Fullscreen">
                 <span class="material-icons" style="font-size: 18px;">fullscreen</span>
             </button>
+            <button class="hud-btn" onclick="toggleHudMinimize()" id="hud-minimize-btn" title="Minimize Top Bar">
+                <span class="material-icons" id="hud-minimize-icon" style="font-size: 18px;">expand_less</span>
+            </button>
         </div>
+
+        <!-- Floating Compact Toggle Pill when HUD is Minimized -->
+        <button class="hud-restore-btn" id="hud-restore-btn" onclick="toggleHudMinimize()" title="Expand Top Bar" style="display: none;">
+            <span class="material-icons" style="font-size: 20px;">expand_more</span>
+        </button>
 
         <div class="frame-container" id="player-frame-container">
             <iframe id="gameiframe" src="" allowfullscreen title="Game Frame"></iframe>
