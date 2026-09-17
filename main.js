@@ -32,26 +32,14 @@ let lastSoundTime = 0;
 
 document.addEventListener('DOMContentLoaded', async () => {
     loadSettings();
-
-    // STEP 1: Run 3-second Educational Splash Screen FIRST
-    setTimeout(() => {
-        const splash = document.getElementById('splash-screen');
-        if (splash) {
-            splash.classList.add('hidden');
-            setTimeout(() => {
-                splash.remove();
-                // STEP 2: Trigger about:blank Gate Check AFTER splash is removed
-                checkGateStatus();
-            }, 600);
-        }
-    }, 3000);
+    handleTabRouting();
 
     startTypewriter();
     await fetchGames();
     setupEventListeners();
 });
 
-// Detection for about:blank & Frame Context
+// Detects if running inside about:blank
 function isInAboutBlank() {
     try {
         return (
@@ -65,19 +53,37 @@ function isInAboutBlank() {
     }
 }
 
-function checkGateStatus() {
-    const gate = document.getElementById('mandatory-gate');
-    if (gate) {
-        if (isInAboutBlank()) {
-            gate.style.display = 'none';
-            injectEasterEggButton();
-        } else {
-            gate.style.display = 'flex';
-        }
+// Master execution flow: Prevents bleed-through outside about:blank
+function handleTabRouting() {
+    const splash = document.getElementById('splash-screen');
+    const portalApp = document.getElementById('portal-app-wrapper');
+    const searchGroup = document.getElementById('edu-search-box-group');
+    const launchGroup = document.getElementById('edu-launch-box-group');
+
+    if (isInAboutBlank()) {
+        // INSIDE ABOUT:BLANK -> Run 3-second splash, then show full portal
+        if (searchGroup) searchGroup.style.display = 'block';
+        if (launchGroup) launchGroup.style.display = 'none';
+
+        setTimeout(() => {
+            if (splash) {
+                splash.classList.add('hidden');
+                setTimeout(() => {
+                    splash.remove();
+                    if (portalApp) portalApp.style.display = 'block';
+                    injectEasterEggButton();
+                }, 600);
+            }
+        }, 3000);
+    } else {
+        // NORMAL TAB -> Hide portal completely (NO BLEED-THROUGH), show launch block inside splash screen
+        if (portalApp) portalApp.style.display = 'none';
+        if (searchGroup) searchGroup.style.display = 'none';
+        if (launchGroup) launchGroup.style.display = 'block';
+        if (splash) splash.style.opacity = '1';
     }
 }
 
-// Easter Egg setup when running inside about:blank
 function injectEasterEggButton() {
     const navBrand = document.querySelector('.nav-brand');
     if (navBrand && !document.getElementById('easter-egg-btn')) {
@@ -146,7 +152,7 @@ function playRandomSound() {
     }
 }
 
-// Always launches as about:blank & closes parent tab
+// Launches about:blank tab & closes original parent tab
 function openAboutBlank() {
     const win = window.open('about:blank', '_blank');
     if (win) {
@@ -203,7 +209,6 @@ async function launchGame(id, game) {
     titleDisplay.textContent = game.name.toUpperCase();
     playerView.style.display = 'flex';
 
-    // Reset HUD state to visible upon launching any game
     const hud = document.getElementById('game-hud');
     const restoreBtn = document.getElementById('hud-restore-btn');
     if (hud) hud.classList.remove('minimized');
@@ -263,7 +268,6 @@ async function launchGame(id, game) {
     }
 }
 
-// Toggle Game HUD Minimization State
 function toggleHudMinimize() {
     const hud = document.getElementById('game-hud');
     const restoreBtn = document.getElementById('hud-restore-btn');
@@ -419,7 +423,6 @@ function generateDynamicCover(name) {
     return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
 
-// Separates games by type into Flash/HTML5 vs Retro Vault sections
 function renderGames(gamesObj, searchQuery = '') {
     const mainGrid = document.getElementById('game-grid');
     const retroGrid = document.getElementById('retro-game-grid');
@@ -469,7 +472,6 @@ function renderGames(gamesObj, searchQuery = '') {
 
         card.addEventListener('click', () => launchGame(id, game));
 
-        // Direct retro games to the Retro Console section grid
         if ((game.type === 'retro' || (game.catagory && game.catagory.includes('retro'))) && retroGrid) {
             retroGrid.appendChild(card);
             retroCount++;
