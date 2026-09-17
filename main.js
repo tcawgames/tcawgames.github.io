@@ -184,8 +184,10 @@ function showView(viewName) {
 
     if (viewName === 'flash-games') {
         flashSec.style.display = 'block';
+        renderGames(allGamesData);
     } else if (viewName === 'retro-console') {
         retroSec.style.display = 'block';
+        renderGames(allGamesData);
     } else if (viewName === 'proxy') {
         proxySec.style.display = 'block';
     }
@@ -422,7 +424,7 @@ function renderGames(gamesObj, searchQuery = '') {
     const mainGrid = document.getElementById('game-grid');
     const retroGrid = document.getElementById('retro-game-grid');
     
-    mainGrid.innerHTML = '';
+    if (mainGrid) mainGrid.innerHTML = '';
     if (retroGrid) retroGrid.innerHTML = '';
 
     const query = searchQuery.toLowerCase().trim();
@@ -468,16 +470,16 @@ function renderGames(gamesObj, searchQuery = '') {
         card.addEventListener('click', () => launchGame(id, game));
 
         // Direct retro games to the Retro Console section grid
-        if (game.type === 'retro' && retroGrid) {
+        if ((game.type === 'retro' || (game.catagory && game.catagory.includes('retro'))) && retroGrid) {
             retroGrid.appendChild(card);
             retroCount++;
-        } else {
+        } else if (mainGrid) {
             mainGrid.appendChild(card);
             standardCount++;
         }
     });
 
-    if (standardCount === 0) {
+    if (standardCount === 0 && mainGrid) {
         mainGrid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">No games match this category or search.</p>';
     }
 
